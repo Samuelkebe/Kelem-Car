@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
             position: relative;
             overflow: auto;
         }
-        
+
         /* 3D Configurator Styles */
         .car-configurator {
             position: fixed;
@@ -27,17 +28,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 9999;
             display: none;
         }
-        
+
         .configurator-container {
             width: 100%;
             height: 100%;
             position: relative;
         }
-        
+
         .configurator-close {
             position: absolute;
             top: 20px;
@@ -47,20 +48,20 @@
             cursor: pointer;
             z-index: 10000;
         }
-        
+
         .configurator-options {
             position: absolute;
             bottom: 20px;
             left: 0;
             width: 100%;
             padding: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
-        
+
         .color-option {
             width: 40px;
             height: 40px;
@@ -68,7 +69,7 @@
             cursor: pointer;
             border: 2px solid white;
         }
-        
+
         /* Comparison Tool */
         .comparison-tool {
             position: fixed;
@@ -80,9 +81,9 @@
             border-radius: 30px;
             z-index: 100;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         .comparison-panel {
             position: fixed;
             bottom: 80px;
@@ -90,12 +91,12 @@
             width: 300px;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             padding: 15px;
             display: none;
             z-index: 101;
         }
-        
+
         /* Finance Calculator */
         .calculator-container {
             background: #f8f9fa;
@@ -103,7 +104,7 @@
             border-radius: 10px;
             margin-top: 30px;
         }
-        
+
         /* Filter System */
         .filter-section {
             background: #f8f9fa;
@@ -111,13 +112,13 @@
             border-radius: 10px;
             margin-bottom: 30px;
         }
-        
+
         /* AR Button */
         .ar-button {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             border: none;
             border-radius: 5px;
@@ -125,14 +126,14 @@
             font-size: 0.8rem;
             display: none;
         }
-        
+
         @media (min-width: 768px) {
             .ar-button {
                 display: block;
             }
         }
-        
-        
+
+
         /* Original Styles */
         .car-card {
             border: 1px solid #ddd;
@@ -143,32 +144,39 @@
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
         }
+
         .car-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+
         .car-card img {
             width: 100%;
             border-radius: 8px;
         }
+
         .car-card-body {
             padding: 15px;
         }
+
         .car-title {
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
+
         .car-price {
             font-size: 1.5rem;
             font-weight: bold;
             color: #007bff;
             margin-bottom: 10px;
         }
+
         .car-description {
             font-size: 0.9rem;
             color: #555;
             margin-bottom: 15px;
         }
+
         .btn-primary {
             background-color: #007bff;
             border: none;
@@ -176,9 +184,11 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+
         .btn-primary:hover {
             background-color: #0056b3;
         }
+
         .btn-secondary {
             background-color: #6c757d;
             border: none;
@@ -187,66 +197,82 @@
             transition: background-color 0.3s;
             margin-left: 10px;
         }
+
         .btn-secondary:hover {
             background-color: #5a6268;
         }
-        
+
         /* Dark mode styles */
         .dark-mode {
             background-color: #121212;
             color: #f8f9fa;
         }
+
         .dark-mode .car-card {
             background-color: #1e1e1e;
             border-color: #333;
         }
+
         .dark-mode .car-description {
             color: #ccc;
         }
+
         .dark-mode .filter-section,
         .dark-mode .calculator-container {
             background-color: #1e1e1e;
             border-color: #333;
         }
+
         .dark-mode .modal-content {
             background-color: #1e1e1e;
             color: #f8f9fa;
         }
+
         .dark-mode .comparison-panel {
             background-color: #2d2d2d;
             color: #f8f9fa;
         }
-            /* Custom Styles */
-    .navbar {
-        background-color: #f8f9fa; /* Light background for navbar */
-        font-weight: bold;
-    }
 
-    .navbar-nav {
-            margin-left: auto; /* Push navbar items to the right */
-    }
-    .navbar-brand img {
-        max-height: 60px; /* Adjust logo size */
-    }
-    .navbar-brand {
-            margin-right: auto; /* Push brand to the left */
-    }
-    .navbar-brand h1 {
-        font-weight: bold;
-        font-size: 30px;
-        margin: 10px 0;
-        color: #078bbe;
-        margin-right: auto;
-    }
+        /* Custom Styles */
+        .navbar {
+            background-color: #f8f9fa;
+            /* Light background for navbar */
+            font-weight: bold;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            /* Push navbar items to the right */
+        }
+
+        .navbar-brand img {
+            max-height: 60px;
+            /* Adjust logo size */
+        }
+
+        .navbar-brand {
+            margin-right: auto;
+            /* Push brand to the left */
+        }
+
+        .navbar-brand h1 {
+            font-weight: bold;
+            font-size: 30px;
+            margin: 10px 0;
+            color: #078bbe;
+            margin-right: auto;
+        }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="picture room/kelem blue.png" alt="kelem blue" style="max-height: 50px; margin-right: 10px;">
             <h1 class="mb-0" style="font-size: 24px;">Kelem Car</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -255,7 +281,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="inventory.html">Inventory</a>
+                    <a class="nav-link" href="Inventory.html">Inventory</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Sell My Car.html">Sell My Car</a>
@@ -283,25 +309,27 @@
                 <li class="nav-item Active" style="background: linear-gradient(to right, #7b00ff, #0057ee);">
                     <a class="nav-link" href="Admin.html" style="color: white;">Admin</a>
                 </li>
-                
-                
+
+
                 <script>
                     // Dark mode toggle
-                    document.getElementById('darkModeToggle').addEventListener('click', function() {
+                    document.getElementById('darkModeToggle').addEventListener('click', function () {
                         document.body.classList.toggle('dark-mode');
                         this.querySelector('i').classList.toggle('fa-sun');
                     });
                 </script>
-                
+
                 <style>
                     .dark-mode {
                         background-color: #121212;
                         color: #f8f9fa;
                     }
+
                     .dark-mode .card {
                         background-color: #1e1e1e;
                         color: #f8f9fa;
                     }
+
                     .dark-mode .modal-content {
                         background-color: #1e1e1e;
                         color: #f8f9fa;
@@ -334,7 +362,7 @@
     <div class="comparison-tool" id="comparisonTool">
         <i class="fas fa-exchange-alt"></i> Compare (<span id="compareCount">0</span>/3)
     </div>
-    
+
     <div class="comparison-panel" id="comparisonPanel">
         <h5>Compare Cars</h5>
         <div id="comparisonItems"></div>
@@ -360,13 +388,18 @@
                     <div class="car-card-body">
                         <h2 class="car-title">Lamborghini Aventador</h2>
                         <p class="car-price">$393,695</p>
-                        <p class="car-description">The Lamborghini Aventador is a high-performance sports car that boasts a powerful V12 engine, aggressive styling, and exceptional driving dynamics.</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View Details</button>
-                        <button class="btn btn-secondary" onclick="addToCart('Lamborghini Aventador', 393695)">Add to Cart</button>
-                        <button class="btn btn-outline-info btn-sm mt-2" onclick="configureCar('Lamborghini Aventador')">
+                        <p class="car-description">The Lamborghini Aventador is a high-performance sports car that
+                            boasts a powerful V12 engine, aggressive styling, and exceptional driving dynamics.</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View
+                            Details</button>
+                        <button class="btn btn-secondary" onclick="addToCart('Lamborghini Aventador', 393695)">Add to
+                            Cart</button>
+                        <button class="btn btn-outline-info btn-sm mt-2"
+                            onclick="configureCar('Lamborghini Aventador')">
                             <i class="fas fa-cog"></i> 3D Configurator
                         </button>
-                        <button class="btn btn-outline-warning btn-sm mt-2 add-to-compare" data-car="Lamborghini Aventador">
+                        <button class="btn btn-outline-warning btn-sm mt-2 add-to-compare"
+                            data-car="Lamborghini Aventador">
                             <i class="fas fa-exchange-alt"></i> Compare
                         </button>
                     </div>
@@ -381,9 +414,12 @@
                     <div class="car-card-body">
                         <h2 class="car-title">Ford Mustang</h2>
                         <p class="car-price">$27,205</p>
-                        <p class="car-description">The Ford Mustang is an iconic American muscle car known for its powerful engine options, classic design, and exhilarating driving experience.</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View Details</button>
-                        <button class="btn btn-secondary" onclick="addToCart('Ford Mustang', 27205)">Add to Cart</button>
+                        <p class="car-description">The Ford Mustang is an iconic American muscle car known for its
+                            powerful engine options, classic design, and exhilarating driving experience.</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View
+                            Details</button>
+                        <button class="btn btn-secondary" onclick="addToCart('Ford Mustang', 27205)">Add to
+                            Cart</button>
                         <button class="btn btn-outline-info btn-sm mt-2" onclick="configureCar('Ford Mustang')">
                             <i class="fas fa-cog"></i> 3D Configurator
                         </button>
@@ -402,9 +438,12 @@
                     <div class="car-card-body">
                         <h2 class="car-title">Porsche 911</h2>
                         <p class="car-price">$101,200</p>
-                        <p class="car-description">The Porsche 911 is a legendary sports car renowned for its exceptional handling, timeless design, and exhilarating performance.</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View Details</button>
-                        <button class="btn btn-secondary" onclick="addToCart('Porsche 911', 101200)">Add to Cart</button>
+                        <p class="car-description">The Porsche 911 is a legendary sports car renowned for its
+                            exceptional handling, timeless design, and exhilarating performance.</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carDetailsModal">View
+                            Details</button>
+                        <button class="btn btn-secondary" onclick="addToCart('Porsche 911', 101200)">Add to
+                            Cart</button>
                         <button class="btn btn-outline-info btn-sm mt-2" onclick="configureCar('Porsche 911')">
                             <i class="fas fa-cog"></i> 3D Configurator
                         </button>
@@ -463,7 +502,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Order Summary</h5>
                         <div id="order-summary">
-                            </div>
+                        </div>
                         <button class="btn btn-primary w-100 mt-3" id="checkout-btn">Proceed to Checkout</button>
                         <div id="paypal-button-container" class="mt-3"></div>
                     </div>
@@ -472,7 +511,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="carDetailsModal" tabindex="-1" aria-labelledby="carDetailsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="carDetailsModal" tabindex="-1" aria-labelledby="carDetailsModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -508,7 +548,7 @@
                                 </tr>
                             </thead>
                             <tbody id="comparisonTableBody">
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -583,7 +623,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Dark mode toggle
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
+        document.getElementById('darkModeToggle').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
             const icon = this.querySelector('i');
             if (document.body.classList.contains('dark-mode')) {
@@ -651,11 +691,11 @@
         }
 
         function addToCart(carName, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name: carName, price: price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${carName} has been added to your cart!`);
-}
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: carName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${carName} has been added to your cart!`);
+        }
 
         // Car details modal
         const carDetailsModal = document.getElementById('carDetailsModal');
@@ -704,65 +744,65 @@
 
         // Finance calculator
         function calculatePayment() {
-    const carPrice = parseFloat(document.getElementById('carSelect').value);
-    const downPayment = parseFloat(document.getElementById('downPayment').value);
-    const loanTermMonths = parseInt(document.getElementById('loanTerm').value);
-    const interestRateAnnual = parseFloat(document.getElementById('interestRate').value) / 100;
-    const interestRateMonthly = interestRateAnnual / 12;
-    const principal = carPrice - downPayment;
+            const carPrice = parseFloat(document.getElementById('carSelect').value);
+            const downPayment = parseFloat(document.getElementById('downPayment').value);
+            const loanTermMonths = parseInt(document.getElementById('loanTerm').value);
+            const interestRateAnnual = parseFloat(document.getElementById('interestRate').value) / 100;
+            const interestRateMonthly = interestRateAnnual / 12;
+            const principal = carPrice - downPayment;
 
-    if (principal <= 0) {
-        document.getElementById('monthlyPayment').textContent = '$0';
-        document.getElementById('totalInterest').textContent = '$0';
-        document.getElementById('totalCost').textContent = `$${carPrice.toLocaleString()}`;
-        return;
-    }
+            if (principal <= 0) {
+                document.getElementById('monthlyPayment').textContent = '$0';
+                document.getElementById('totalInterest').textContent = '$0';
+                document.getElementById('totalCost').textContent = `$${carPrice.toLocaleString()}`;
+                return;
+            }
 
-    const monthlyPayment = (principal * interestRateMonthly) / (1 - Math.pow(1 + interestRateMonthly, -loanTermMonths));
-    const totalCostOfLoan = monthlyPayment * loanTermMonths;
-    const totalInterestPaid = totalCostOfLoan - principal;
-    const totalCost = carPrice + totalInterestPaid;
+            const monthlyPayment = (principal * interestRateMonthly) / (1 - Math.pow(1 + interestRateMonthly, -loanTermMonths));
+            const totalCostOfLoan = monthlyPayment * loanTermMonths;
+            const totalInterestPaid = totalCostOfLoan - principal;
+            const totalCost = carPrice + totalInterestPaid;
 
-    document.getElementById('monthlyPayment').textContent = `$${monthlyPayment.toFixed(2)}`;
-    document.getElementById('totalInterest').textContent = `$${totalInterestPaid.toFixed(2)}`;
-    document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
-}
+            document.getElementById('monthlyPayment').textContent = `$${monthlyPayment.toFixed(2)}`;
+            document.getElementById('totalInterest').textContent = `$${totalInterestPaid.toFixed(2)}`;
+            document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+        }
         function calculatePayment() {
-    const carPrice = parseFloat(document.getElementById('carSelect').value);
-    const downPayment = parseFloat(document.getElementById('downPayment').value);
-    const loanTerm = parseInt(document.getElementById('loanTerm').value);
-    const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const carPrice = parseFloat(document.getElementById('carSelect').value);
+            const downPayment = parseFloat(document.getElementById('downPayment').value);
+            const loanTerm = parseInt(document.getElementById('loanTerm').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
 
-    if (isNaN(carPrice) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
-        alert('Please enter valid numbers for all fields.');
-        return;
-    }
+            if (isNaN(carPrice) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
+                alert('Please enter valid numbers for all fields.');
+                return;
+            }
 
-    if (downPayment < 0 || interestRate < 0 || loanTerm <= 0) {
-        alert('Down payment, interest rate, and loan term must be positive values.');
-        return;
-    }
+            if (downPayment < 0 || interestRate < 0 || loanTerm <= 0) {
+                alert('Down payment, interest rate, and loan term must be positive values.');
+                return;
+            }
 
-    const principal = carPrice - downPayment;
-    const monthlyInterestRate = interestRate / 100 / 12;
-    const numberOfPayments = loanTerm;
+            const principal = carPrice - downPayment;
+            const monthlyInterestRate = interestRate / 100 / 12;
+            const numberOfPayments = loanTerm;
 
-    let monthlyPayment;
-    if (monthlyInterestRate === 0) {
-        monthlyPayment = principal / numberOfPayments;
-    } else {
-        const numerator = principal * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments);
-        const denominator = Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1;
-        monthlyPayment = numerator / denominator;
-    }
+            let monthlyPayment;
+            if (monthlyInterestRate === 0) {
+                monthlyPayment = principal / numberOfPayments;
+            } else {
+                const numerator = principal * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments);
+                const denominator = Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1;
+                monthlyPayment = numerator / denominator;
+            }
 
-    const totalCost = monthlyPayment * numberOfPayments;
-    const totalInterest = totalCost - principal;
+            const totalCost = monthlyPayment * numberOfPayments;
+            const totalInterest = totalCost - principal;
 
-    document.getElementById('monthlyPayment').innerText = '$' + monthlyPayment.toFixed(2);
-    document.getElementById('totalInterest').innerText = '$' + totalInterest.toFixed(2);
-    document.getElementById('totalCost').innerText = '$' + totalCost.toFixed(2);
-}
+            document.getElementById('monthlyPayment').innerText = '$' + monthlyPayment.toFixed(2);
+            document.getElementById('totalInterest').innerText = '$' + totalInterest.toFixed(2);
+            document.getElementById('totalCost').innerText = '$' + totalCost.toFixed(2);
+        }
 
         // Filter system
         const priceRange = document.getElementById('priceRange');
@@ -848,14 +888,14 @@
                     </div>
                 `;
                 carContainer.appendChild(col);
-             // Re-initialize the event listener for the car details modal
-            carDetailsModal.addEventListener('show.bs.modal', (event) => {
-                const button = event.relatedTarget;
-                const carName = button.parentElement.querySelector('.car-title').innerText;
-                const car = carDetails[carName];
+                // Re-initialize the event listener for the car details modal
+                carDetailsModal.addEventListener('show.bs.modal', (event) => {
+                    const button = event.relatedTarget;
+                    const carName = button.parentElement.querySelector('.car-title').innerText;
+                    const car = carDetails[carName];
 
-                const modalBody = document.getElementById('carDetailsContent');
-                modalBody.innerHTML = `
+                    const modalBody = document.getElementById('carDetailsContent');
+                    modalBody.innerHTML = `
                     <div class="row">
                         <div class="col-md-6">
                             <img src="${car.image}" alt="${car.name}" class="img-fluid mb-3">
@@ -881,358 +921,359 @@
                         </div>
                     </div>
                 `;
-                  const modalBuyNow = document.getElementById('modalBuyNow');
+                    const modalBuyNow = document.getElementById('modalBuyNow');
                     if (modalBuyNow) { // Check if the element exists
                         modalBuyNow.addEventListener('click', () => {
                             addToCart(car.name, car.price);
-                             $('#carDetailsModal').modal('hide');
+                            $('#carDetailsModal').modal('hide');
                         });
                     }
-            });
-            initComparison(); // Initialize comparison feature for new cars
-        }
+                });
+                initComparison(); // Initialize comparison feature for new cars
+            }
 
         priceRange.addEventListener('input', () => {
-            priceRangeValue.innerText = '$' + parseInt(priceRange.value).toLocaleString();
-            filterCars();
-        });
-
-        carTypeFilter.addEventListener('change', filterCars);
-        sortBy.addEventListener('change', filterCars);
-
-        function filterCars() {
-            const maxPrice = parseInt(priceRange.value);
-            const carType = carTypeFilter.value;
-
-            let filteredCars = cars.filter(car => car.price <= maxPrice);
-
-            if (carType !== 'all') {
-                filteredCars = filteredCars.filter(car => car.type === carType);
-            }
-
-            const sortByValue = sortBy.value;
-            if (sortByValue === 'price-low') {
-                filteredCars.sort((a, b) => a.price - b.price);
-            } else if (sortByValue === 'price-high') {
-                filteredCars.sort((a, b) => b.price - a.price);
-            } else if (sortByValue === 'name-asc') {
-                filteredCars.sort((a, b) => a.name.localeCompare(b.name));
-            } else if (sortByValue === 'name-desc') {
-                 filteredCars.sort((a, b) => b.name.localeCompare(a.name));
-            }
-
-            displayCars(filteredCars);
-        }
-
-        document.getElementById('filterUnder50k').addEventListener('click', () => {
-            priceRange.value = 50000;
-            priceRangeValue.innerText = '$50,000';
-            filterCars();
-        });
-
-        document.getElementById('filterElectric').addEventListener('click', () => {
-            const electricCars = cars.filter(car => car.electric);
-            displayCars(electricCars);
-        });
-
-        filterCars();
-
-        // 3D configurator
-        let scene, camera, renderer, controls;
-        let selectedCar;
-        let carModel;
-        const car3dViewer = document.getElementById('car3dViewer');
-        const configurator = document.querySelector('.car-configurator');
-        const closeConfiguratorBtn = document.getElementById('closeConfigurator');
-        const colorOptions = document.querySelectorAll('.color-option');
-
-        function configureCar(carName) {
-            selectedCar = carName;
-            configurator.style.display = 'block';
-
-            if (!scene) {
-                init3DScene();
-            } else {
-                // Clear the scene
-                while (scene.children.length > 0) {
-                    const obj = scene.children[0];
-                    scene.remove(obj);
-                }
-                //  Add the car model
-                loadCarModel(carName);
-            }
-        }
-
-        closeConfiguratorBtn.addEventListener('click', () => {
-            configurator.style.display = 'none';
-
-            if (scene) {
-                scene.traverse(object => {
-                    if (object.isMesh) {
-                        object.geometry.dispose();
-                        if (object.material.map) object.material.map.dispose();
-                        object.material.dispose();
-                    }
-                });
-
-                while (scene.children.length > 0) {
-                    scene.remove(scene.children[0]);
-                }
-            }
-
-            if (renderer) {
-                renderer.forceContextLoss();
-                renderer.dispose();
-                renderer = null;
-            }
-
-            scene = null;
-        });
-
-        function init3DScene() {
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color('white');
-
-            camera = new THREE.PerspectiveCamera(75, car3dViewer.clientWidth / car3dViewer.clientHeight, 0.1, 1000);
-            camera.position.set(0, 5, 15);
-
-            renderer = new THREE.WebGLRenderer({ canvas: car3dViewer, antialias: true });
-            renderer.setSize(car3dViewer.clientWidth, car3dViewer.clientHeight);
-            renderer.outputEncoding = THREE.sRGBEncoding;
-
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.1;
-            controls.rotateSpeed = 0.5;
-
-            const ambientLight = new THREE.HemisphereLight(0xffffff, 0x404040, 0.7);
-            scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-            loadCarModel(selectedCar);
-            animate();
-        }
-
-        function loadCarModel(carName) {
-            let modelUrl = '';
-            switch (carName) {
-                case 'Lamborghini Aventador':
-                    modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamborghini_aventador_countach_lpi_800_4/model.gltf';
-                    break;
-                case 'Ford Mustang':
-                    modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/ford_mustang_shelby_gt500/model.gltf';
-                    break;
-                case 'Porsche 911':
-                    modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/porsche_911_carrera_s/model.gltf';
-                    break;
-            }
-
-            const loader = new THREE.GLTFLoader();
-            loader.load(modelUrl, (gltf) => {
-                carModel = gltf.scene;
-                carModel.scale.set(0.05, 0.05, 0.05);
-                scene.add(carModel);
-            }, undefined, (error) => {
-                console.error('Error loading model:', error);
+                priceRangeValue.innerText = '$' + parseInt(priceRange.value).toLocaleString();
+                filterCars();
             });
-        }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
-        }
+            carTypeFilter.addEventListener('change', filterCars);
+            sortBy.addEventListener('change', filterCars);
 
-        colorOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const colorValue = parseInt(option.dataset.color);
-                if (carModel) {
-                    carModel.traverse(child => {
-                        if (child.isMesh) {
-                            child.material.color.setHex(colorValue);
+            function filterCars() {
+                const maxPrice = parseInt(priceRange.value);
+                const carType = carTypeFilter.value;
+
+                let filteredCars = cars.filter(car => car.price <= maxPrice);
+
+                if (carType !== 'all') {
+                    filteredCars = filteredCars.filter(car => car.type === carType);
+                }
+
+                const sortByValue = sortBy.value;
+                if (sortByValue === 'price-low') {
+                    filteredCars.sort((a, b) => a.price - b.price);
+                } else if (sortByValue === 'price-high') {
+                    filteredCars.sort((a, b) => b.price - a.price);
+                } else if (sortByValue === 'name-asc') {
+                    filteredCars.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (sortByValue === 'name-desc') {
+                    filteredCars.sort((a, b) => b.name.localeCompare(a.name));
+                }
+
+                displayCars(filteredCars);
+            }
+
+            document.getElementById('filterUnder50k').addEventListener('click', () => {
+                priceRange.value = 50000;
+                priceRangeValue.innerText = '$50,000';
+                filterCars();
+            });
+
+            document.getElementById('filterElectric').addEventListener('click', () => {
+                const electricCars = cars.filter(car => car.electric);
+                displayCars(electricCars);
+            });
+
+            filterCars();
+
+            // 3D configurator
+            let scene, camera, renderer, controls;
+            let selectedCar;
+            let carModel;
+            const car3dViewer = document.getElementById('car3dViewer');
+            const configurator = document.querySelector('.car-configurator');
+            const closeConfiguratorBtn = document.getElementById('closeConfigurator');
+            const colorOptions = document.querySelectorAll('.color-option');
+
+            function configureCar(carName) {
+                selectedCar = carName;
+                configurator.style.display = 'block';
+
+                if (!scene) {
+                    init3DScene();
+                } else {
+                    // Clear the scene
+                    while (scene.children.length > 0) {
+                        const obj = scene.children[0];
+                        scene.remove(obj);
+                    }
+                    //  Add the car model
+                    loadCarModel(carName);
+                }
+            }
+
+            closeConfiguratorBtn.addEventListener('click', () => {
+                configurator.style.display = 'none';
+
+                if (scene) {
+                    scene.traverse(object => {
+                        if (object.isMesh) {
+                            object.geometry.dispose();
+                            if (object.material.map) object.material.map.dispose();
+                            object.material.dispose();
                         }
                     });
+
+                    while (scene.children.length > 0) {
+                        scene.remove(scene.children[0]);
+                    }
+                }
+
+                if (renderer) {
+                    renderer.forceContextLoss();
+                    renderer.dispose();
+                    renderer = null;
+                }
+
+                scene = null;
+            });
+
+            function init3DScene() {
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color('white');
+
+                camera = new THREE.PerspectiveCamera(75, car3dViewer.clientWidth / car3dViewer.clientHeight, 0.1, 1000);
+                camera.position.set(0, 5, 15);
+
+                renderer = new THREE.WebGLRenderer({ canvas: car3dViewer, antialias: true });
+                renderer.setSize(car3dViewer.clientWidth, car3dViewer.clientHeight);
+                renderer.outputEncoding = THREE.sRGBEncoding;
+
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.1;
+                controls.rotateSpeed = 0.5;
+
+                const ambientLight = new THREE.HemisphereLight(0xffffff, 0x404040, 0.7);
+                scene.add(ambientLight);
+
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
+                directionalLight.position.set(1, 1, 1);
+                scene.add(directionalLight);
+                loadCarModel(selectedCar);
+                animate();
+            }
+
+            function loadCarModel(carName) {
+                let modelUrl = '';
+                switch (carName) {
+                    case 'Lamborghini Aventador':
+                        modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/lamborghini_aventador_countach_lpi_800_4/model.gltf';
+                        break;
+                    case 'Ford Mustang':
+                        modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/ford_mustang_shelby_gt500/model.gltf';
+                        break;
+                    case 'Porsche 911':
+                        modelUrl = 'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/porsche_911_carrera_s/model.gltf';
+                        break;
+                }
+
+                const loader = new THREE.GLTFLoader();
+                loader.load(modelUrl, (gltf) => {
+                    carModel = gltf.scene;
+                    carModel.scale.set(0.05, 0.05, 0.05);
+                    scene.add(carModel);
+                }, undefined, (error) => {
+                    console.error('Error loading model:', error);
+                });
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const colorValue = parseInt(option.dataset.color);
+                    if (carModel) {
+                        carModel.traverse(child => {
+                            if (child.isMesh) {
+                                child.material.color.setHex(colorValue);
+                            }
+                        });
+                    }
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (renderer) {
+                    camera.aspect = car3dViewer.clientWidth / car3dViewer.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(car3dViewer.clientWidth, car3dViewer.clientHeight);
                 }
             });
-        });
 
-        window.addEventListener('resize', () => {
-            if (renderer) {
-                camera.aspect = car3dViewer.clientWidth / car3dViewer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(car3dViewer.clientWidth, car3dViewer.clientHeight);
-            }
-        });
+            // Comparison tool
+            let carsToCompare = [];
+            const comparisonTool = document.getElementById('comparisonTool');
+            const comparisonPanel = document.getElementById('comparisonPanel');
+            const comparisonItems = document.getElementById('comparisonItems');
+            const compareNowBtn = document.getElementById('compareNowBtn');
+            const clearCompareBtn = document.getElementById('clearCompareBtn');
+            const maxComparisonCount = 3;
 
-        // Comparison tool
-        let carsToCompare = [];
-        const comparisonTool = document.getElementById('comparisonTool');
-        const comparisonPanel = document.getElementById('comparisonPanel');
-        const comparisonItems = document.getElementById('comparisonItems');
-        const compareNowBtn = document.getElementById('compareNowBtn');
-        const clearCompareBtn = document.getElementById('clearCompareBtn');
-        const maxComparisonCount = 3;
-
-        function initComparison() {
-            const addToCompareButtons = document.querySelectorAll('.add-to-compare');
-            addToCompareButtons.forEach(button => {
-                button.addEventListener('click', handleAddToCompare);
-            });
-        }
-        initComparison();
-
-        function handleAddToCompare(event) {
-            const carName = event.target.dataset.car;
-
-            function updateComparisonTool() {
-                const compareCount = document.getElementById('compareCount');
-                compareCount.innerText = carsToCompare.length;
-
+            function initComparison() {
                 const addToCompareButtons = document.querySelectorAll('.add-to-compare');
                 addToCompareButtons.forEach(button => {
-                    button.disabled = carsToCompare.length >= maxComparisonCount && !carsToCompare.includes(button.dataset.car);
+                    button.addEventListener('click', handleAddToCompare);
+                });
+            }
+            initComparison();
+
+            function handleAddToCompare(event) {
+                const carName = event.target.dataset.car;
+
+                function updateComparisonTool() {
+                    const compareCount = document.getElementById('compareCount');
+                    compareCount.innerText = carsToCompare.length;
+
+                    const addToCompareButtons = document.querySelectorAll('.add-to-compare');
+                    addToCompareButtons.forEach(button => {
+                        button.disabled = carsToCompare.length >= maxComparisonCount && !carsToCompare.includes(button.dataset.car);
+                    });
+
+                    if (carsToCompare.length > 0) {
+                        comparisonTool.classList.add('active');
+                    } else {
+                        comparisonTool.classList.remove('active');
+                    }
+                }
+
+                if (carsToCompare.includes(carName)) {
+                    carsToCompare = carsToCompare.filter(name => name !== carName);
+                    event.target.classList.remove('active');
+                } else {
+                    carsToCompare.push(carName);
+                    event.target.classList.add('active');
+                }
+
+                updateComparisonTool();
+                updateComparisonPanel();
+            }
+
+            function updateComparisonPanel() {
+                comparisonItems.innerHTML = '';
+                carsToCompare.forEach(carName => {
+                    const item = document.createElement('div');
+                    item.className = 'comparison-item';
+                    item.innerHTML = `<i class="fas fa-car"></i> ${carName} <span class="remove-compare" data-car="${carName}">&times;</span>`;
+                    comparisonItems.appendChild(item);
                 });
 
                 if (carsToCompare.length > 0) {
-                    comparisonTool.classList.add('active');
+                    comparisonPanel.style.display = 'block';
                 } else {
-                    comparisonTool.classList.remove('active');
+                    comparisonPanel.style.display = 'none';
                 }
-            }
 
-            if (carsToCompare.includes(carName)) {
-                carsToCompare = carsToCompare.filter(name => name !== carName);
-                event.target.classList.remove('active');
-            } else {
-                carsToCompare.push(carName);
-                event.target.classList.add('active');
-            }
-
-            updateComparisonTool();
-            updateComparisonPanel();
-        }
-
-        function updateComparisonPanel() {
-            comparisonItems.innerHTML = '';
-            carsToCompare.forEach(carName => {
-                const item = document.createElement('div');
-                item.className = 'comparison-item';
-                item.innerHTML = `<i class="fas fa-car"></i> ${carName} <span class="remove-compare" data-car="${carName}">&times;</span>`;
-                comparisonItems.appendChild(item);
-            });
-
-            if (carsToCompare.length > 0) {
-                comparisonPanel.style.display = 'block';
-            } else {
-                comparisonPanel.style.display = 'none';
-            }
-
-            document.querySelectorAll('.remove-compare').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const carName = event.target.dataset.car;
-                    carsToCompare = carsToCompare.filter(name => name !== carName);
-                    const addToCompareButtons = document.querySelectorAll('.add-to-compare');
-                    addToCompareButtons.forEach(btn => {
-                        if (btn.dataset.car === carName) {
-                            btn.classList.remove('active');
-                        }
+                document.querySelectorAll('.remove-compare').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const carName = event.target.dataset.car;
+                        carsToCompare = carsToCompare.filter(name => name !== carName);
+                        const addToCompareButtons = document.querySelectorAll('.add-to-compare');
+                        addToCompareButtons.forEach(btn => {
+                            if (btn.dataset.car === carName) {
+                                btn.classList.remove('active');
+                            }
+                        });
+                        updateComparisonTool();
+                        updateComparisonPanel();
                     });
-                    updateComparisonTool();
-                    updateComparisonPanel();
                 });
+            }
+
+            comparisonTool.addEventListener('click', () => {
+                if (carsToCompare.length > 0) {
+                    comparisonPanel.style.display = 'block';
+                }
             });
-        }
 
-        comparisonTool.addEventListener('click', () => {
-            if (carsToCompare.length > 0) {
-                comparisonPanel.style.display = 'block';
-            }
-        });
-
-        clearCompareBtn.addEventListener('click', () => {
-            carsToCompare = [];
-            comparisonPanel.style.display = 'none';
-             const addToCompareButtons = document.querySelectorAll('.add-to-compare');
-            addToCompareButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            updateComparisonTool();
-            updateComparisonPanel();
-        });
-
-        compareNowBtn.addEventListener('click', () => {
-            if (carsToCompare.length < 2) {
-                alert('Please select at least two cars to compare.');
-                return;
-            }
-            openComparisonModal();
-        });
-
-        function openComparisonModal() {
-            const comparisonModal = new bootstrap.Modal(document.getElementById('comparisonModal'));
-            const comparisonTableBody = document.getElementById('comparisonTableBody');
-            comparisonTableBody.innerHTML = '';
-
-            document.getElementById('compareCar1').innerText = carsToCompare[0];
-            document.getElementById('compareCar2').innerText = carsToCompare[1];
-            if (carsToCompare.length > 2) {
-                document.getElementById('compareCar3').innerText = carsToCompare[2];
-            } else {
-                document.getElementById('compareCar3').innerText = '';
-            }
-
-            const features = [
-                { label: "Price", key: "price" },
-                { label: "Engine", key: "engine" },
-                { label: "Horsepower", key: "horsepower" },
-                { label: "Top Speed", key: "topSpeed" },
-                { label: "Acceleration", key: "acceleration" },
-                { label: "Type", key: "type" },
-                { label: "Fuel Type", key: "fuelType" },
-                { label: "Seats", key: "seats" },
-                { label: "Transmission", key: "transmission" },
-                { label: "Drive Type", key: "driveType" }
-            ];
-
-            features.forEach(feature => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${feature.label}</td>`;
-                carsToCompare.forEach(carName => {
-                    const car = carDetails[carName];
-                    let value = car[feature.key];
-                    if (feature.key === "price") {
-                        value = '$' + value.toLocaleString();
-                    }
-                    row.innerHTML += `<td>${value || 'N/A'}</td>`;
+            clearCompareBtn.addEventListener('click', () => {
+                carsToCompare = [];
+                comparisonPanel.style.display = 'none';
+                const addToCompareButtons = document.querySelectorAll('.add-to-compare');
+                addToCompareButtons.forEach(btn => {
+                    btn.classList.remove('active');
                 });
-                comparisonTableBody.appendChild(row);
+                updateComparisonTool();
+                updateComparisonPanel();
             });
 
-            comparisonModal.show();
+            compareNowBtn.addEventListener('click', () => {
+                if (carsToCompare.length < 2) {
+                    alert('Please select at least two cars to compare.');
+                    return;
+                }
+                openComparisonModal();
+            });
+
+            function openComparisonModal() {
+                const comparisonModal = new bootstrap.Modal(document.getElementById('comparisonModal'));
+                const comparisonTableBody = document.getElementById('comparisonTableBody');
+                comparisonTableBody.innerHTML = '';
+
+                document.getElementById('compareCar1').innerText = carsToCompare[0];
+                document.getElementById('compareCar2').innerText = carsToCompare[1];
+                if (carsToCompare.length > 2) {
+                    document.getElementById('compareCar3').innerText = carsToCompare[2];
+                } else {
+                    document.getElementById('compareCar3').innerText = '';
+                }
+
+                const features = [
+                    { label: "Price", key: "price" },
+                    { label: "Engine", key: "engine" },
+                    { label: "Horsepower", key: "horsepower" },
+                    { label: "Top Speed", key: "topSpeed" },
+                    { label: "Acceleration", key: "acceleration" },
+                    { label: "Type", key: "type" },
+                    { label: "Fuel Type", key: "fuelType" },
+                    { label: "Seats", key: "seats" },
+                    { label: "Transmission", key: "transmission" },
+                    { label: "Drive Type", key: "driveType" }
+                ];
+
+                features.forEach(feature => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${feature.label}</td>`;
+                    carsToCompare.forEach(carName => {
+                        const car = carDetails[carName];
+                        let value = car[feature.key];
+                        if (feature.key === "price") {
+                            value = '$' + value.toLocaleString();
+                        }
+                        row.innerHTML += `<td>${value || 'N/A'}</td>`;
+                    });
+                    comparisonTableBody.appendChild(row);
+                });
+
+                comparisonModal.show();
+            }
+
+            // AR preview (Placeholder)
+            function showARPreview(carName) {
+                alert(`AR preview for ${carName} is not available.  This would launch a WebXR viewer.`);
+            }
+    </script>
+    <script>
+            function updateARButtonVisibility() {
+                const arButtons = document.querySelectorAll('.ar-button');
+                arButtons.forEach(button => {
+                    button.style.display = window.innerWidth >= 768 ? 'block' : 'none';
+                });
+            }
         }
 
-        // AR preview (Placeholder)
-        function showARPreview(carName) {
-            alert(`AR preview for ${carName} is not available.  This would launch a WebXR viewer.`);
-        }
-    </script>
-<script>
-    function updateARButtonVisibility() {
-    const arButtons = document.querySelectorAll('.ar-button');
-    arButtons.forEach(button => {
-        button.style.display = window.innerWidth >= 768 ? 'block' : 'none';
-    });
-    }
-}
+        // Initial call
+        updateARButtonVisibility();
 
-// Initial call
-updateARButtonVisibility();
-
-// Update on window resize
-window.addEventListener('resize', updateARButtonVisibility);
+        // Update on window resize
+        window.addEventListener('resize', updateARButtonVisibility);
     </script>
-</head>
-    </body>
+    </head>
+</body>
+
 </html>
