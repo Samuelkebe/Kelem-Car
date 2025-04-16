@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelem Car</title>
+    <link rel="icon" href="picture room/kelem blue.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7x2e5l5e5e5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* ========== CARD STYLING ========== */
+        @media (max-width: 2000px) {
+  .card.car-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+
+    /* 🌈 Gradient background */
+    background: linear-gradient(
+      to right,
+      hsl(175, 94%, 54%),
+      #36ccd6,
+      #00f0ff,
+      #0084ff,
+      #0044ff,
+      #6200ea
+    );
+
+    /* 🌑 Shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .card.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .card.car-card .card-body {
+    background: rgba(255, 255, 255, 0.85); /* Optional: improves text readability */
+    backdrop-filter: blur(5px);
+    color: #000;
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}   
+        .card.car-card .card-body {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(4px);
+          padding: 1rem;
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-img-top,
+        .car-card-image,
+        .card.car-card img.car-card-image {
+          width: 100%;
+          height: 220px;
+          object-fit: contain;
+          background-color: #f9f9f9;
+          padding: 5px;
+          transition: transform 0.3s ease;
+        }
+        
+        .card.car-card:hover .car-card-image {
+          transform: scale(1.02);
+        }
+        
+        /* ========== RESPONSIVE COLUMNS ========== */
+        .col-md-4,
+        .col-lg-4,
+        .col-sm-6,
+        .col-12 {
+          display: flex;
+        }
+        .col-md-4 > .car-card,
+        .col-lg-4 > .car-card {
+          width: 100%;
+        }
+        
+        /* ========== CARD FOOTER ========== */
+        .car-card-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.03);
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ========== BADGES ========== */
+        .car-card-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: #0faabe;
+          color: white;
+          padding: 3px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        
+        /* ========== DROPDOWN / SELECT STYLING ========== */
+        .select-arrow {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+        }
+        .select-arrow select {
+          width: 200px;
+        }
+        .select-arrow::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 12px;
+          transform: translateY(-50%);
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 6px solid #4a5568;
+          pointer-events: none;
+        }
+        
+        /* ========== NAVBAR ========== */
+        .navbar {
+          background-color: #f8f9fa;
+          font-weight: bold;
+        }
+        .navbar-brand img {
+          max-height: 60px;
+        }
+        .navbar-nav {
+          margin-left: auto;
+        }
+        .navbar-brand {
+          margin-right: flex;
+          display: flex;
+        }
+        .navbar-brand h1 {
+          font-weight: bold;
+          font-size: 24px;
+          margin: 0;
+          color: #0987ad;
+        }
+        
+        /* ========== MOBILE FILTER PANEL ========== */
+        @media (max-width: 768px) {
+          .car-card {
+            flex-direction: column !important;
+          }
+        
+          .filter-section {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            height: 100vh;
+            z-index: 1050;
+            background: white;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+          }
+        
+          .filter-section.show {
+            left: 0;
+          }
+        
+          .filter-toggle {
+            display: block !important;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1040;
+          }
+        }
+        
+        /* ========== OPTIONAL: THEME GRADIENTS ========== */
+        .card.car-card.blue-luxury {
+          background: linear-gradient(135deg, #dbe9f4, #f7fbff);
+        }
+        .card.car-card.sporty-red {
+          background: linear-gradient(135deg, #ff4e50, #f9d423);
+        }
+        .card.car-card.electric-style {
+          background: linear-gradient(135deg, #1cb5e0, #000851);
+          color: white;
+        }
+        .card.car-card.muted-grey {
+          background: linear-gradient(135deg, #e0e0e0, #f8f9fa);
+        }
+        .card.car-card.gradient-theme {
+  background: linear-gradient(to right, hsl(175, 94%, 54%), #36ccd6, #00f0ff, #0084ff, #0044ff, #6200ea);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+.text-gradient {
+  background: linear-gradient(to right, #7b00ff, #0057ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>  
+</head>
+<body class="bg-light font-inter">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="picture room/kelem logo.png" alt="Kelem Car Logo" class="me-2" style="height: 50px; object-fit: contain;">
+            <span class="fw-bold fs-4 text-gradient">Kelem Car</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">Inventory</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item text-success" href="#">All Cars</a></li>
+                  <li><a class="dropdown-item text-purple" href="#">Used Cars</a></li>
+                  <li><a class="dropdown-item text-info" href="#">Electric Cars</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="Sell My Car.html">Sell My Car</a></li>
+              <li class="nav-item"><a class="nav-link" href="Car Leasing.html">Car Leasing</a></li>
+              <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="Shop.HTML">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+              <li class="nav-item">
+                <button class="btn btn-link nav-link" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+              </li>
+              <li class="nav-item ms-2">
+                <a class="nav-link text-white px-3 py-1 rounded"
+                   href="Admin.html"
+                   style="background: linear-gradient(to right, #7b00ff, #0057ee);">
+                  Admin
+                </a>
+              </li>              
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>      
+    <div class="container py-4">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6">449,776 cars found</h1>
+        <div class="row g-4 mb-6">
+            <div class="col-md-4 col-sm-8">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-4">Filters</h2>
+                    <!-- Search Filter -->
+                    <div class="mb-3">
+                        <label for="search" class="form-label text-gray-700 text-sm font-bold">Search</label>
+                        <input type="text" name="" id="search-item" class="form-control" placeholder="Enter car name or description">
+                    </div>
+                    <!-- Make Filter -->
+                    <div class="mb-3">
+                        <label for="make" class="form-label text-gray-700 text-sm font-bold">Name</label>
+                        <div class="select-arrow">
+                            <select id="make" class="form-select">
+                                <option value="any">Any</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="mahindra">Mahindra</option>
+                                <option value="isuzu">Isuzu</option>
+                                <option value="lamborghini">Lamborghini</option>
+                                <option value="rolls-royce">Rolls-Royce</option>
+                                <option value="peugeot">Peugeot</option>
+                                <option value="bmw">BMW</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Model Filter -->
+                    <div class="mb-3">
+                        <label for="model" class="form-label text-gray-700 text-sm font-bold">Model</label>
+                        <div class="select-arrow">
+                            <select id="model" class="form-select">
+                                <option value="any">Any</option>
+                                <option value="fortuner">Fortuner</option>
+                                <option value="xuv700">XUV700</option>
+                                <option value="s-cab">S-CAB</option>
+                                <option value="revuelto">Revuelto</option>
+                                <option value="huracan evo">Huracan EVO</option>
+                                <option value="cullinan">Cullinan</option>
+                                <option value="2008">2008</option>
+                                <option value="rifter">Rifter</option>
+                                <option value="208">208</option>
+                                <option value="x5">X5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Price Range Filter -->
+                    <div class="mb-3">
+                        <label for="price" class="form-label text-gray-700 text-sm font-bold">Price Range</label>
+                        <div class="select-arrow">
+                            <select id="price" class="form-select">
+                                <option value="any">Any</option>
+                                <option value="5000">Up to £5,000</option>
+                                <option value="10000">Up to £10,000</option>
+                                <option value="15000">Up to £15,000</option>
+                                <option value="20000">Up to £20,000</option>
+                                <option value="50000">Up to £50,000</option>
+                                <option value="100000">Up to £100,000</option>
+                                <option value="500000">Up to £500,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Year Filter -->
+                    <div class="mb-3">
+                        <label for="year" class="form-label text-gray-700 text-sm font-bold">Year</label>
+                        <div class="select-arrow">
+                            <select id="year" class="form-select">
+                                <option value="any">Any</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Car Type Filter -->
+                    <div class="mb-3">
+                        <label for="new-cars" class="form-label text-gray-700 text-sm font-bold">Car Type</label>
+                        <div class="form-check">
+                            <input type="checkbox" id="new-cars" class="form-check-input">
+                            <label for="new-cars" class="form-check-label text-sm text-gray-700">Only new cars</label>
+                        </div>
+                    </div>
+
+                    <!-- Save Search Button -->
+                    <button class="btn btn-outline-primary">
+                        Save search
+                    </button>
+                </div>
+            </div>
+            <!-- Car Cards Section -->
+            <div class="col-md-8">
+                <div class="d-flex justify-content-between items-center mb-4">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary filter-btn" data-filter="all">All</button>
+                        <button class="btn btn-outline-secondary filter-btn" data-filter="new">New</button>
+                        <button class="btn btn-outline-secondary filter-btn" data-filter="used">Used</button>
+                    </div>
+                    <div>
+                        <label for="sort" class="form-label text-gray-700 text-sm font-bold">Sort by</label>
+                        <div class="select-arrow">
+                            <select id="sort" class="form-select">
+                                <option value="relevance">Relevance</option>
+                                <option value="price-low-to-high">Price (Low to High)</option>
+                                <option value="price-high-to-low">Price (High to Low)</option>
+                                <option value="year">Year</option>
+                                <option value="mileage">Mileage</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start gap-2 mb-3">
+                    <button class="btn btn-sm btn-outline-primary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-sm btn-outline-info"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="fab fa-instagram"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-link"></i></button>
+                </div>
+                <div class="row g-4">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#financeModal">
+                        <i class="fas fa-calculator"></i> Calculate Finance
+                    </button>
+                    
+                    <!-- Add this modal -->
+                    <div class="modal fade" id="financeModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Finance Calculator</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Vehicle Price</label>
+                                        <input type="text" class="form-control" id="finance-price" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Deposit (£)</label>
+                                        <input type="number" class="form-control" value="5000">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Term (months)</label>
+                                        <select class="form-select">
+                                            <option>24</option>
+                                            <option selected>36</option>
+                                            <option>48</option>
+                                            <option>60</option>
+                                        </select>
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <p class="mb-1">Estimated monthly payment: <strong>£450</strong></p>
+                                        <small class="text-muted">Representative APR 6.9%</small>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Apply Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Car Card -->
+<!-- Hyundai Avanti -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="hyundai" data-model="avanti" data-price="1600000" data-year="2022" data-new="true" data-type="new">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-danger m-2">Hot Deal</span>
+      </div>
+      <img src="picture room/Hyundai-Avante.jpg" class="card-img-top car-card-image" alt="Hyundai Avanti"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Hyundai Avanti"
+           data-price="₹1.6 Million"
+           data-img="picture room/Hyundai-Avante.jpg"
+           data-description="<strong>🚗 Hyundai Avanti – Futuristic Urban Coupe</strong><br><br>
+           <ul>
+             <li><strong>Design:</strong> Sporty two-seater with aerodynamic styling.</li>
+             <li><strong>Performance:</strong> Turbocharged engine with smooth 6-speed transmission.</li>
+             <li><strong>Tech:</strong> Touchscreen infotainment, Bluetooth, rear camera.</li>
+             <li><strong>Comfort:</strong> Leather seats, climate control, compact but premium interior.</li>
+           </ul>
+           <strong>🔥 A bold style statement with punchy performance!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Hyundai Avanti</h5>
+        <p class="card-text price">₹1.6 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Toyota Invincible -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="toyota" data-model="invincible" data-price="8200000" data-year="2023" data-new="true" data-type="new">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-danger m-2">Hot Deal</span>
+      </div>
+      <img src="picture room/Toyota-HILUX-Invincible.jpg" class="card-img-top car-card-image" alt="Toyota Invincible"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Toyota Invincible"
+           data-price="₹8.2 Million"
+           data-img="picture room/Toyota-HILUX-Invincible.jpg"
+           data-description="<strong>💪 Toyota Invincible – Rugged, Reliable, Powerful</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 2.8L diesel with exceptional torque.</li>
+             <li><strong>Drive:</strong> 4WD with off-road and towing capabilities.</li>
+             <li><strong>Interior:</strong> Premium leather, dual-zone AC, infotainment.</li>
+             <li><strong>Safety:</strong> Lane assist, auto emergency braking, 7 airbags.</li>
+           </ul>
+           <strong>🔥 Built to conquer any road or trail!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Toyota Invincible</h5>
+        <p class="card-text price">₹8.2 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Toyota Corolla -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="toyota" data-model="corolla" data-price="1700000" data-year="2021" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/corola.jpg" class="card-img-top car-card-image" alt="Toyota Corolla"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Toyota Corolla"
+           data-price="₹1.7 Million"
+           data-img="picture room/corola.jpg"
+           data-description="<strong>🚗 Toyota Corolla – Reliable and Refined</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.8L petrol, CVT automatic.</li>
+             <li><strong>Interior:</strong> Touchscreen, cruise control, spacious rear seat.</li>
+             <li><strong>Safety:</strong> 5-star NCAP, Toyota Safety Sense.</li>
+             <li><strong>Fuel Efficiency:</strong> ~16-18 km/l combined.</li>
+           </ul>
+           <strong>✅ A world favorite for everyday driving!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Toyota Corolla</h5>
+        <p class="card-text price">₹1.7 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+<!-- Suzuki Dzire -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="suzuki" data-model="dzire" data-price="1600000" data-year="2021" data-new="true" data-type="new">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-danger m-2">Hot Deal</span>
+      </div>
+      <img src="picture room/dzire.png" class="card-img-top car-card-image" alt="Suzuki Dzire"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Suzuki Dzire"
+           data-price="₹1.6 Million"
+           data-img="picture room/dzire.png"
+           data-description="<strong>🚘 Suzuki Dzire – Practical Sedan for Everyday Comfort</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.2L petrol, highly fuel-efficient.</li>
+             <li><strong>Transmission:</strong> 5-speed manual / AMT.</li>
+             <li><strong>Comfort:</strong> Spacious rear seats, smart infotainment.</li>
+             <li><strong>Fuel Efficiency:</strong> ~22 km/l combined.</li>
+           </ul>
+           <strong>✅ A perfect balance of affordability and comfort!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Suzuki Dzire</h5>
+        <p class="card-text price">₹1.6 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Suzuki Swift -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="suzuki" data-model="swift" data-price="1500000" data-year="2022" data-new="true" data-type="new">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-danger m-2">Hot Deal</span>
+      </div>
+      <img src="picture room/suzuki Swift.png" class="card-img-top car-card-image" alt="Suzuki Swift"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Suzuki Swift"
+           data-price="₹1.5 Million"
+           data-img="picture room/suzuki Swift.png"
+           data-description="<strong>🏎️ Suzuki Swift – Sporty Hatchback, Big Personality</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.2L petrol, zippy and responsive.</li>
+             <li><strong>Design:</strong> Dual-tone, LED DRLs, aggressive stance.</li>
+             <li><strong>Features:</strong> SmartPlay touchscreen, climate control.</li>
+             <li><strong>Mileage:</strong> ~22-23 km/l.</li>
+           </ul>
+           <strong>🔥 Compact yet capable, perfect for city driving!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Suzuki Swift</h5>
+        <p class="card-text price">₹1.5 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Toyota HiAce -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="toyota" data-model="hiace" data-price="2700000" data-year="2020" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/toyota hiace.png" class="card-img-top car-card-image" alt="Toyota HiAce"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Toyota HiAce"
+           data-price="₹2.7 Million"
+           data-img="picture room/toyota hiace.png"
+           data-description="<strong>🚐 Toyota HiAce – The Business-Class Van</strong><br><br>
+           <ul>
+             <li><strong>Capacity:</strong> Up to 15 passengers.</li>
+             <li><strong>Engine:</strong> 2.8L diesel, powerful and efficient.</li>
+             <li><strong>Interior:</strong> Air-conditioned, adjustable seats.</li>
+             <li><strong>Use:</strong> Ideal for transport, tourism, or shuttle.</li>
+           </ul>
+           <strong>🌟 A proven workhorse with comfort and space!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Toyota HiAce</h5>
+        <p class="card-text price">₹2.7 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Toyota Vitz -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="toyota" data-model="vitz" data-price="1400000" data-year="2019" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/vits.jpg" class="card-img-top car-card-image" alt="Toyota Vitz"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Toyota Vitz"
+           data-price="₹1.4 Million"
+           data-img="picture room/vits.jpg"
+           data-description="<strong>🚗 Toyota Vitz – Compact, Efficient & Stylish</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.0L petrol, ultra fuel efficient.</li>
+             <li><strong>Design:</strong> Small hatchback, sleek headlights.</li>
+             <li><strong>Utility:</strong> Easy to drive, great for cities.</li>
+             <li><strong>Features:</strong> Basic infotainment, AC, airbags.</li>
+           </ul>
+           <strong>✅ A great value urban commuter!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Toyota Vitz</h5>
+        <p class="card-text price">₹1.4 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+<!-- Suzuki Every -->
+<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="suzuki" data-model="every" data-price="700000" data-year="2018" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/every.jpg" class="card-img-top car-card-image" alt="Suzuki Every"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Suzuki Every"
+           data-price="₹700,000"
+           data-img="picture room/every.jpg"
+           data-description="<strong>🚐 Suzuki Every – Compact Van, Big Versatility</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 660cc petrol, extremely fuel-efficient.</li>
+             <li><strong>Capacity:</strong> 5-8 seats, foldable rear space.</li>
+             <li><strong>Use:</strong> Ideal for families or small business deliveries.</li>
+             <li><strong>Comfort:</strong> Sliding doors, tall roof, AC and infotainment.</li>
+           </ul>
+           <strong>✅ A smart solution for space & savings!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Suzuki Every</h5>
+        <p class="card-text price">₹700,000</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Hyundai Atoz -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="hyundai" data-model="atoz" data-price="620000" data-year="2010" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/atoz.png" class="card-img-top car-card-image" alt="Hyundai Atoz"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Hyundai Atoz"
+           data-price="₹620,000"
+           data-img="picture room/atoz.png"
+           data-description="<strong>🚘 Hyundai Atoz – Compact and Budget-Friendly</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.0L petrol with manual transmission.</li>
+             <li><strong>Design:</strong> Compact hatchback with tall stance.</li>
+             <li><strong>Utility:</strong> Ideal for beginners and short city rides.</li>
+             <li><strong>Interior:</strong> Basic AC, power steering, FM stereo.</li>
+           </ul>
+           <strong>✅ A reliable first car with low maintenance!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Hyundai Atoz</h5>
+        <p class="card-text price">₹620,000</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <!-- Daihatsu Terios 1999 -->
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="card car-card" data-make="daihatsu" data-model="terios" data-price="1800000" data-year="1999" data-new="false" data-type="used">
+      <div class="position-relative">
+        <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+      </div>
+      <img src="picture room/terios.jpeg" class="card-img-top car-card-image" alt="Daihatsu Terios 1999"
+           data-bs-toggle="modal" data-bs-target="#carModal"
+           data-name="Daihatsu Terios 1999"
+           data-price="₹1.8 Million"
+           data-img="picture room/terios.jpeg"
+           data-description="<strong>🚙 Daihatsu Terios 1999 – Compact Off-Roader</strong><br><br>
+           <ul>
+             <li><strong>Engine:</strong> 1.3L petrol, 4WD capable.</li>
+             <li><strong>Build:</strong> Compact SUV, lightweight body-on-frame.</li>
+             <li><strong>Features:</strong> Manual transmission, AC, basic stereo.</li>
+             <li><strong>Off-Road Use:</strong> Ideal for rural, hilly, or off-grid conditions.</li>
+           </ul>
+           <strong>🔥 Old-school tough with a go-anywhere attitude!</strong>">
+      <div class="card-body text-center">
+        <h5 class="card-title">Daihatsu Terios 1999</h5>
+        <p class="card-text price">₹1.8 Million</p>
+      </div>
+      <button class="btn btn-success" onclick="buyNowFromCard(this)">
+        <i class="fas fa-shopping-cart"></i> Buy Now
+      </button>
+    </div>
+  </div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card car-card fade-in"
+                             data-make="ford"
+                             data-model="focus"
+                             data-price="6500"
+                             data-year="2016"
+                             data-new="false"
+                             data-type="used">
+                          <div class="position-relative">
+                            <span class="position-absolute top-0 start-0 badge bg-warning text-dark m-2">Used</span>
+                            <img src="picture room/Ford Focus 2016.jpeg" class="card-img-top car-card-image"
+                                 alt="Ford Focus 2016"
+                                 data-bs-toggle="modal" data-bs-target="#carModal"
+                                 data-name="Ford Focus 2016"
+                                 data-price="£6,500"
+                                 data-img="picture room/Ford Focus 2016.jpg"
+                                 data-description="<strong>🚘 Ford Focus 2016 – Practical, Reliable, Affordable</strong><br><br>
+                                 <ul>
+                                   <li><strong>Engine:</strong> 1.5L EcoBoost</li>
+                                   <li><strong>Transmission:</strong> 6-speed manual</li>
+                                   <li><strong>Fuel Efficiency:</strong> 55 mpg</li>
+                                   <li><strong>Features:</strong> Bluetooth, cruise control, rear parking sensors</li>
+                                   <li><strong>Condition:</strong> Full service history, 1 previous owner</li>
+                                 </ul>
+                                 <strong>💥 A smart choice for city driving or first-time buyers!</strong>">
+                          </div>
+                          <div class="card-body text-center">
+                            <h5 class="card-title">Ford Focus 2016</h5>
+                            <p class="card-text price">£6,500</p>
+                          </div>
+                          <button class="btn btn-success" onclick="buyNowFromCard(this)">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                          </button>
+                          
+                        </div>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Section -->
+    <div class="modal-footer">
+        <button class="btn btn-outline-primary compare-btn" data-car-id="">
+            <i class="fas fa-balance-scale"></i> Add to Compare
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+    <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carModalLabel">Car Details</h5>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary compare-btn" data-car-id="">
+                            <i class="fas fa-balance-scale"></i> Add to Compare
+                        </button>                           
+                    </div>
+                    <button class="btn btn-outline-primary" id="buy-now" data-car-id="">
+                        <i class="fas fa-shopping-cart"></i> you like it?
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="carModalImage" class="img-fluid" src="" alt="Car Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 id="carModalName">Car Name</h5>
+                            <p id="carModalPrice">Car Price</p>
+                            <p id="carModalDescription">Car Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <button class="btn btn-outline-primary" id="save-search" data-bs-toggle="modal" data-bs-target="#saveSearchModal">
+        <i class="far fa-bookmark"></i> Save search
+    </button>
+    
+    <!-- Add this modal before </body> -->
+    <div class="modal fade" id="saveSearchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Save Your Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Search Name</label>
+                        <input type="text" class="form-control" placeholder="e.g. 'Family SUVs under £30k'">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="email-alerts">
+                        <label class="form-check-label" for="email-alerts">Email me when new matches are found</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="comparison-bar" class="fixed-bottom bg-white shadow-lg p-3" style="display: none;">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 me-3">Comparing (2/3)</h5>
+                <div id="comparison-items" class="d-flex"></div>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-outline-secondary me-2">
+                    <i class="fas fa-print"></i>
+                </button>
+                <button class="btn btn-sm btn-primary me-2">
+                    Compare Now
+                </button>
+                <button class="btn btn-sm btn-outline-danger" id="clear-comparison">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="compare-bar" class="position-fixed bottom-0 end-0 m-3 p-3 bg-white shadow-lg rounded" style="display: none; z-index: 1000;">
+    <div class="d-flex align-items-center">
+      <span class="badge bg-primary me-2" id="compare-count">0</span>
+      <span class="me-3">cars selected</span>
+      <button id="compare-btn" class="btn btn-sm btn-success me-2" disabled>
+        Compare Now
+      </button>
+      <button id="clear-compare" class="btn btn-sm btn-outline-danger">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  </div>
+<div>
+    <div id="vehicleList" class="container mt-4">
+        <h1 class="text-center">Coming soon</h1>
+        <div class="row g-4 mt-4">
+            <!-- Vehicle cards will be dynamically inserted here -->
+        </div>
+        <div class="row g-4" id="inventory-container">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6"><span id="carCount">449,776</span> cars found</h1>
+        <div class="row g-4 mb-6">
+            <div class="col-md-4 col-sm-8">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h2 class="text-lg font-semibold text-gray-700 mb-4">Filters</h2>
+                    <!-- Search Filter -->
+                    <div class="mb-3">
+                        <label for="search" class="form-label text-gray-700 text-sm font-bold">Search</label>
+                        <input type="text" id="search-item" class="form-control" placeholder="Enter car name or description">
+                    </div>
+                    
+                    <!-- Make Filter -->
+                    <div class="mb-3">
+                        <label for="make" class="form-label text-gray-700 text-sm font-bold">Make</label>
+                        <select id="make" class="form-select">
+                            <option value="any">Any Make</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                    
+                    <!-- Model Filter -->
+                    <div class="mb-3">
+                        <label for="model" class="form-label text-gray-700 text-sm font-bold">Model</label>
+                        <select id="model" class="form-select">
+                            <option value="any">Any Model</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                    
+                    <!-- Price Range Filter -->
+                    <div class="mb-3">
+                        <label for="price" class="form-label text-gray-700 text-sm font-bold">Price Range</label>
+                        <select id="price" class="form-select">
+                            <option value="any">Any Price</option>
+                            <option value="5000">Up to £5,000</option>
+                            <option value="10000">Up to £10,000</option>
+                            <option value="15000">Up to £15,000</option>
+                            <option value="20000">Up to £20,000</option>
+                            <option value="50000">Up to £50,000</option>
+                            <option value="100000">Up to £100,000</option>
+                            <option value="500000">Up to £500,000</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Year Filter -->
+                    <div class="mb-3">
+                        <label for="year" class="form-label text-gray-700 text-sm font-bold">Year</label>
+                        <select id="year" class="form-select">
+                            <option value="any">Any Year</option>
+                            <!-- Years will be populated dynamically -->
+                        </select>
+                    </div>
+                    
+                    <!-- Car Type Filter -->
+                    <div class="mb-3">
+                        <label class="form-label text-gray-700 text-sm font-bold">Car Type</label>
+                        <div class="form-check">
+                            <input type="checkbox" id="new-cars" class="form-check-input">
+                            <label for="new-cars" class="form-check-label text-sm text-gray-700">Only new cars</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="electric-cars" class="form-check-input">
+                            <label for="electric-cars" class="form-check-label text-sm text-gray-700">Only electric</label>
+                        </div>
+                    </div>
+    
+                    <button class="btn btn-outline-primary w-100" id="save-search">
+                        <i class="far fa-bookmark me-2"></i>Save Search
+                    </button>
+                </div>
+            </div>
+    
+            <div class="col-md-8">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary filter-btn" data-filter="all">All</button>
+                        <button class="btn btn-outline-secondary filter-btn" data-filter="new">New</button>
+                        <button class="btn btn-outline-secondary filter-btn" data-filter="used">Used</button>
+                    </div>
+                    <div>
+                        <label for="sort" class="form-label text-gray-700 text-sm font-bold me-2">Sort by</label>
+                        <select id="sort" class="form-select">
+                            <option value="relevance">Relevance</option>
+                            <option value="price-low-to-high">Price (Low to High)</option>
+                            <option value="price-high-to-low">Price (High to Low)</option>
+                            <option value="year">Newest First</option>
+                            <option value="mileage">Lowest Mileage</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="d-flex justify-content-start gap-2 mb-3">
+                    <button class="btn btn-sm btn-outline-primary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-sm btn-outline-info"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="fab fa-instagram"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-link"></i></button>
+                </div>
+                
+    
+                <div class="row g-4" id="inventory-container">
+                    <!-- Cars will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+        function renderCars(filteredCars) {
+    const inventoryContainer = document.getElementById('inventory-container');
+    inventoryContainer.innerHTML = '';
+
+    filteredCars.forEach(car => {
+        const card = document.createElement('div');
+        card.className = 'col-md-6 col-lg-4 mb-4';
+        card.innerHTML = `
+            <div class="card car-card h-100" data-make="${car.make}" data-model="${car.model}" data-price="${car.price}" data-year="${car.year}" data-new="${car.type === 'new'}" data-description="${car.description}" data-type="${car.type}">
+                <img src="${car.img}" class="card-img-top car-card-image" alt="${car.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${car.name}</h5>
+                    <p class="card-text">£${parseInt(car.price).toLocaleString()}</p>
+                    <div class="car-details">
+                        <span class="badge bg-primary">${car.year}</span>
+                        <span class="badge bg-secondary">${car.mileage} mi</span>
+                        <span class="badge bg-info">${car.fuel}</span>
+                    </div>
+                    <button class="btn btn-success mt-2 w-100 buy-now-button" data-car-id="${car.id}">
+                        <i class="fas fa-shopping-cart me-2"></i>Buy Now
+                    </button>
+                    <button class="btn btn-outline-info mt-2 w-100" data-bs-toggle="modal" data-bs-target="#carModal"
+                        data-name="${car.name}"
+                        data-price="£${parseInt(car.price).toLocaleString()}"
+                        data-img="${car.img}"
+                        data-description="${car.description}">
+                        View Details
+                    </button>
+                </div>
+            </div>`;
+        inventoryContainer.appendChild(card);
+    });
+
+    // Add event listeners to Buy Now buttons
+    document.querySelectorAll('.buy-now-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const carId = this.getAttribute('data-car-id');
+            handleBuyNow(carId);
+        });
+    });
+}
+</script>
+
+<script>
+        // Load cars from localStorage and initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const cars = JSON.parse(localStorage.getItem('ownerCars') || '[]');
+            const inventoryContainer = document.getElementById('inventory-container');
+
+            // Update car count
+            document.getElementById('carCount').textContent = cars.length.toLocaleString();
+
+            // Populate filter options
+            populateFilters(cars);
+
+            // Initial render
+            renderCars(cars);
+
+            // Set up filter event listeners
+            document.querySelectorAll('.filter-btn, #search-item, #make, #model, #price, #year, #new-cars, #electric-cars, #sort').forEach(element => {
+                element.addEventListener('change', filterCars);
+            });
+        });
+
+        function populateFilters(cars) {
+            const makes = [...new Set(cars.map(car => car.make))];
+            const models = [...new Set(cars.map(car => car.model))];
+            const years = [...new Set(cars.map(car => car.year))].sort((a, b) => b - a);
+
+            // Populate Make filter
+            const makeSelect = document.getElementById('make');
+            makeSelect.innerHTML = '<option value="any">Any Make</option>';
+            makes.forEach(make => {
+                makeSelect.innerHTML += `<option value="${make}">${make}</option>`;
+            });
+
+            // Populate Model filter
+            const modelSelect = document.getElementById('model');
+            modelSelect.innerHTML = '<option value="any">Any Model</option>';
+            models.forEach(model => {
+                modelSelect.innerHTML += `<option value="${model}">${model}</option>`;
+            });
+
+            // Populate Year filter
+            const yearSelect = document.getElementById('year');
+            yearSelect.innerHTML = '<option value="any">Any Year</option>';
+            years.forEach(year => {
+                yearSelect.innerHTML += `<option value="${year}">${year}+</option>`;
+            });
+        }
+
+        function renderCars(filteredCars) {
+            const inventoryContainer = document.getElementById('inventory-container');
+            inventoryContainer.innerHTML = '';
+
+            filteredCars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4 mb-4';
+                card.innerHTML = `
+                    <div class="card car-card h-100" data-make="${car.make}" data-model="${car.model}" data-price="${car.price}" data-year="${car.year}" data-new="${car.type === 'new'}" data-description="${car.description}" data-type="${car.type}">
+                        <img src="${car.img}" class="card-img-top car-card-image" alt="${car.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${car.name}</h5>
+                            <p class="card-text">£${parseInt(car.price).toLocaleString()}</p>
+                            <div class="car-details">
+                                <span class="badge bg-primary">${car.year}</span>
+                                <span class="badge bg-secondary">${car.mileage} mi</span>
+                                <span class="badge bg-info">${car.fuel}</span>
+                            </div>
+                            <button class="btn btn-success mt-2 w-100 buy-now-button" onclick="buyNowFromCard(this)">
+                                <i class="fas fa-shopping-cart me-2"></i>Purchase Now
+                            </button>
+                            <button class="btn btn-outline-info mt-2 w-100" data-bs-toggle="modal" data-bs-target="#carModal"
+                                data-name="${car.name}"
+                                data-price="£${parseInt(car.price).toLocaleString()}"
+                                data-img="${car.img}"
+                                data-description="${car.description}">
+                                View Details
+                            </button>
+                        </div>
+                    </div>`;
+                inventoryContainer.appendChild(card);
+            });
+        }
+
+        function filterCars() {
+            const allCars = JSON.parse(localStorage.getItem('ownerCars') || '[]');
+            const searchTerm = document.getElementById('search-item').value.toLowerCase();
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const price = document.getElementById('price').value;
+            const year = document.getElementById('year').value;
+            const newOnly = document.getElementById('new-cars').checked;
+            const electricOnly = document.getElementById('electric-cars').checked;
+            const sortBy = document.getElementById('sort').value;
+            const currentFilter = document.querySelector('.filter-btn.btn-primary')?.dataset?.filter || 'all';
+
+            let filtered = allCars.filter(car => {
+                const matchesSearch = car.name.toLowerCase().includes(searchTerm) || car.description.toLowerCase().includes(searchTerm);
+                const matchesMake = make === 'any' || car.make === make;
+                const matchesModel = model === 'any' || car.model === model;
+                const matchesPrice = price === 'any' || car.price <= parseInt(price);
+                const matchesYear = year === 'any' || car.year >= parseInt(year);
+                const matchesNew = !newOnly || car.type === 'new';
+                const matchesElectric = !electricOnly || car.type === 'electric';
+                const matchesTypeFilter = currentFilter === 'all' || car.type === currentFilter;
+
+                return matchesSearch && matchesMake && matchesModel && matchesPrice && matchesYear && matchesNew && matchesElectric && matchesTypeFilter;
+            });
+
+            // Sorting
+            filtered.sort((a, b) => {
+                switch (sortBy) {
+                    case 'price-low-to-high': return a.price - b.price;
+                    case 'price-high-to-low': return b.price - a.price;
+                    case 'year': return b.year - a.year;
+                    case 'mileage': return a.mileage - b.mileage; // Ensure your car objects have a 'mileage' property
+                    default: return 0;
+                }
+            });
+
+            renderCars(filtered);
+            document.getElementById('carCount').textContent = filtered.length.toLocaleString();
+        }
+
+        function buyNowFromCard(button) {
+            const card = button.closest('.car-card');
+            const name = card.querySelector('.card-title').innerText;
+            const price = card.querySelector('.card-text').innerText.replace(/[^\d]/g, '');
+            const img = card.querySelector('img.car-card-image').getAttribute('src');
+
+            const car = { name, price, img };
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(car);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            window.location.href = 'Shop.HTML';
+        }
+    </script>
+    <script>
+    // Load cars from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        const cars = JSON.parse(localStorage.getItem('ownerCars') || '[]');
+        const inventoryContainer = document.getElementById('inventory-container');
+        
+        // Update car count
+        document.getElementById('carCount').textContent = cars.length.toLocaleString();
+    
+        // Populate filter options
+        populateFilters(cars);
+    
+        // Initial render
+        renderCars(cars);
+    
+        // Set up filter event listeners
+        document.querySelectorAll('.filter-btn, #search-item, #make, #model, #price, #year, #new-cars, #electric-cars, #sort').forEach(element => {
+            element.addEventListener('change', () => filterCars(cars));
+        });
+    });
+    
+    function populateFilters(cars) {
+        const makes = [...new Set(cars.map(car => car.make))];
+        const models = [...new Set(cars.map(car => car.model))];
+        const years = [...new Set(cars.map(car => car.year))].sort((a, b) => b - a);
+    
+        // Populate Make filter
+        const makeSelect = document.getElementById('make');
+        makes.forEach(make => {
+            makeSelect.innerHTML += `<option value="${make}">${make}</option>`;
+        });
+    
+        // Populate Model filter
+        const modelSelect = document.getElementById('model');
+        models.forEach(model => {
+            modelSelect.innerHTML += `<option value="${model}">${model}</option>`;
+        });
+    
+        // Populate Year filter
+        const yearSelect = document.getElementById('year');
+        years.forEach(year => {
+            yearSelect.innerHTML += `<option value="${year}">${year}+</option>`;
+        });
+    }
+    
+    function renderCars(filteredCars) {
+        const inventoryContainer = document.getElementById('inventory-container');
+        inventoryContainer.innerHTML = ''; // This clears the existing content
+
+        filteredCars.forEach(car => {
+            const card = document.createElement('div');
+            card.className = 'col-md-6 col-lg-4 mb-4';
+            card.innerHTML = `
+                <div class="card car-card h-100" data-make="${car.make}" data-model="${car.model}" data-price="${car.price}" data-year="${car.year}" data-new="${car.type === 'new'}" data-description="${car.description}" data-type="${car.type}">
+                    <img src="${car.img}" class="card-img-top car-card-image" alt="${car.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${car.name}</h5>
+                        <p class="card-text">£${parseInt(car.price).toLocaleString()}</p>
+                        <div class="car-details">
+                            <span class="badge bg-primary">${car.year}</span>
+                            <span class="badge bg-secondary">${car.mileage} mi</span>
+                            <span class="badge bg-info">${car.fuel}</span>
+                        </div>
+                        <button class="btn btn-success mt-2 w-100 buy-now-button" onclick="buyNowFromCard(this)">
+                            <i class="fas fa-shopping-cart me-2"></i>Purchase Now
+                        </button>
+                        <button class="btn btn-outline-info mt-2 w-100" data-bs-toggle="modal" data-bs-target="#carModal"
+                            data-name="${car.name}"
+                            data-price="£${parseInt(car.price).toLocaleString()}"
+                            data-img="${car.img}"
+                            data-description="${car.description}">
+                            View Details
+                        </button>
+                    </div>
+                </div>`;
+            inventoryContainer.appendChild(card);
+        });
+    }
+    
+    function filterCars(allCars) {
+        const searchTerm = document.getElementById('search-item').value.toLowerCase();
+        const make = document.getElementById('make').value;
+        const model = document.getElementById('model').value;
+        const price = document.getElementById('price').value;
+        const year = document.getElementById('year').value;
+        const newOnly = document.getElementById('new-cars').checked;
+        const electricOnly = document.getElementById('electric-cars').checked;
+        const sortBy = document.getElementById('sort').value;
+    
+        let filtered = allCars.filter(car => {
+            return (
+                (car.name.toLowerCase().includes(searchTerm) || 
+                 car.description.toLowerCase().includes(searchTerm)) &&
+                (make === 'any' || car.make === make) &&
+                (model === 'any' || car.model === model) &&
+                (price === 'any' || car.price <= parseInt(price)) &&
+                (year === 'any' || car.year >= parseInt(year)) &&
+                (!newOnly || car.type === 'new') &&
+                (!electricOnly || car.type === 'electric')
+            );
+        });
+    
+        // Sorting
+        filtered.sort((a, b) => {
+            switch(sortBy) {
+                case 'price-low-to-high': return a.price - b.price;
+                case 'price-high-to-low': return b.price - a.price;
+                case 'year': return b.year - a.year;
+                case 'mileage': return a.mileage - b.mileage;
+                default: return 0;
+            }
+        });
+    
+        renderCars(filtered);
+        document.getElementById('carCount').textContent = filtered.length.toLocaleString();
+    }
+    
+    function showFinanceModal(carId) {
+        const car = JSON.parse(localStorage.getItem('ownerCars')).find(c => c.id == carId);
+        const modal = new bootstrap.Modal(document.getElementById('financeModal'));
+        
+        document.getElementById('finance-price').value = `£${parseInt(car.price).toLocaleString()}`;
+        modal.show();
+    }
+    </script>
+      <script>
+        // Listen to all buttons in the dropdown
+        document.querySelectorAll('.dropdown-item[data-type]').forEach(button => {
+          button.addEventListener('click', () => {
+            const selectedType = button.getAttribute('data-type');
+      
+            // Loop through all car cards
+            document.querySelectorAll('.car-card').forEach(card => {
+              const cardType = card.getAttribute('data-type') || 'all';
+      
+              // Show all cars if type is 'all'
+              if (selectedType === 'all' || cardType === selectedType) {
+                card.parentElement.style.display = 'block';
+              } else {
+                card.parentElement.style.display = 'none';
+              }
+            });
+          });
+        });
+      </script>  
+          <script>
+
+            // Initialize compare array
+    let compareList = [];
+    
+    // Add to your modal initialization
+    $('#carModal').on('show.bs.modal', function(event) {
+      // ... existing code ...
+      
+      // Add compare button functionality
+      const modal = $(this);
+      modal.find('.compare-btn').off('click').on('click', function() {
+        const carName = modal.find('#carModalName').text();
+        const carId = carName.replace(/\s+/g, '-').toLowerCase();
+    
+        if (compareList.includes(carId)) {
+          compareList = compareList.filter(id => id !== carId);
+          $(this).html('<i class="fas fa-balance-scale"></i> Compare');
+        } else {
+          if (compareList.length >= 3) {
+            alert('Maximum 3 cars for comparison');
+            return;
+          }
+          compareList.push(carId);
+          $(this).html('<i class="fas fa-check"></i> Added');
+        }
+        updateCompareBar();
+      });
+    });
+    
+    function updateCompareBar() {
+      const compareBar = $('#compare-bar');
+      if (compareList.length > 0) {
+        compareBar.show();
+        $('#compare-count').text(compareList.length);
+        $('#compare-btn').prop('disabled', false);
+      } else {
+        compareBar.hide();
+      }
+    }
+            // Track current filter state
+            let currentFilter = "all";
+            
+            // Modal data population
+            $('#carModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var name = button.data('name');
+                var price = button.data('price');
+                var img = button.data('img');
+                var description = button.data('description');
+                var modal = $(this);
+                modal.find('#carModalName').text(name);
+    modal.find('#carModalPrice').text(price);
+    modal.find('#carModalImage').attr('src', img);
+    modal.find('#carModalDescription').html(description);
+    
+    // Set dynamic Shop URL
+    modal.find('#buyNowBtn').attr('href', `Shop.HTML?car=${encodeURIComponent(name)}`);
+    
+            });
+    
+            // Initialize filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update button styles
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('btn-primary');
+                        b.classList.add('btn-outline-secondary');
+                    });
+                    this.classList.remove('btn-outline-secondary');
+                    this.classList.add('btn-primary');
+                    
+                    // Set current filter
+                    currentFilter = this.dataset.filter;
+                    
+                    // Apply filters
+                    filterCars();
+                });
+            });
+    
+            // Set up event listeners for all filters
+            document.getElementById('make').addEventListener('change', filterCars);
+            document.getElementById('model').addEventListener('change', filterCars);
+            document.getElementById('price').addEventListener('change', filterCars);
+            document.getElementById('year').addEventListener('change', filterCars);
+            document.getElementById('new-cars').addEventListener('change', filterCars);
+            document.getElementById('search-item').addEventListener('keyup', filterCars);
+            document.getElementById('sort').addEventListener('change', sortCars);
+    
+            // Main filter function
+            function filterCars() {
+                const make = document.getElementById('make').value.toLowerCase();
+                const model = document.getElementById('model').value.toLowerCase();
+                const price = parseInt(document.getElementById('price').value) || 0;
+                const year = parseInt(document.getElementById('year').value) || 0;
+                const isNewCar = document.getElementById('new-cars').checked;
+                const searchText = document.getElementById('search-item').value.toLowerCase();
+    
+                const carCards = document.querySelectorAll('.car-card');
+    
+                carCards.forEach(card => {
+                    const cardMake = card.getAttribute('data-make').toLowerCase();
+                    const cardModel = card.getAttribute('data-model').toLowerCase();
+                    const cardPrice = parseInt(card.getAttribute('data-price')) || 0;
+                    const cardYear = parseInt(card.getAttribute('data-year')) || 0;
+                    const cardNew = card.getAttribute('data-new') === 'true';
+                    const cardName = card.querySelector('.card-title').textContent.toLowerCase();
+                    
+                    // Get description text without HTML tags
+                    const descriptionHTML = card.getAttribute('data-description');
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = descriptionHTML;
+                    const cardDescription = tempElement.textContent.toLowerCase();
+    
+                    let showCard = true;
+    
+                    // Apply All/New/Used filter
+                    if (currentFilter === "new" && !cardNew) {
+                        showCard = false;
+                    } else if (currentFilter === "used" && cardNew) {
+                        showCard = false;
+                    }
+    
+                    // Apply other filters if card is still visible
+                    if (showCard && make !== 'any' && cardMake !== make) {
+                        showCard = false;
+                    }
+    
+                    if (showCard && model !== 'any' && cardModel !== model) {
+                        showCard = false;
+                    }
+    
+                    if (showCard && price > 0 && cardPrice > price) {
+                        showCard = false;
+                    }
+    
+                    if (showCard && year > 0 && cardYear !== year) {
+                        showCard = false;
+                    }
+    
+                    if (showCard && isNewCar && !cardNew) {
+                        showCard = false;
+                    }
+    
+                    if (showCard && searchText && !cardName.includes(searchText) && !cardDescription.includes(searchText)) {
+                        showCard = false;
+                    }
+    
+                    card.style.display = showCard ? 'flex' : 'none';
+                });
+            }
+    
+            // Sort function
+            function sortCars() {
+                const sortValue = document.getElementById('sort').value;
+                const container = document.querySelector('.row.g-4');
+                const cards = Array.from(document.querySelectorAll('.car-card'));
+                
+                // Get the parent elements of each card
+                const cardContainers = Array.from(document.querySelectorAll('.col-md-4'));
+                
+                // Sort the card containers based on their card data
+                cardContainers.sort((a, b) => {
+                    const cardA = a.querySelector('.car-card');
+                    const cardB = b.querySelector('.car-card');
+                    
+                    if (!cardA || !cardB) return 0;
+                    
+                    switch(sortValue) {
+                        case 'price-low-to-high':
+                            return (parseInt(cardA.getAttribute('data-price')) || 0) - (parseInt(cardB.getAttribute('data-price')) || 0);
+                        case 'price-high-to-low':
+                            return (parseInt(cardB.getAttribute('data-price')) || 0) - (parseInt(cardA.getAttribute('data-price')) || 0);
+                        case 'year':
+                            return (parseInt(cardB.getAttribute('data-year')) || 0) - (parseInt(cardA.getAttribute('data-year')) || 0);
+                        case 'mileage':
+                            // You would need to add mileage data attributes to your cards for this to work
+                            return 0;
+                        default: // 'relevance'
+                            return 0;
+                    }
+                });
+                
+                // Re-append the sorted cards to the container
+                cardContainers.forEach(container => {
+                    document.querySelector('.row.g-4').appendChild(container);
+                });
+            }
+    
+            // Initialize the page
+            filterCars();
+        </script>
+        <script>
+  // Function to handle "Buy Now" action from the car details modal
+  function buyNowFromModal() {
+    const car = {
+      name: document.getElementById('carModalName').innerText,
+      price: document.getElementById('carModalPrice').innerText.replace(/[^\d]/g, ''), // Remove non-digit characters from price
+      img: document.getElementById('carModalImage').getAttribute('src')
+    };
+
+    // Get existing cart items from local storage or initialize an empty array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(car);
+
+    // Store the updated cart in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Redirect to the shopping cart page
+    window.location.href = 'Shop.HTML';
+  }
+</script>
+
+<script>
+  // Function to handle "Buy Now" action directly from a car card
+  function buyNowFromCard(button) {
+    const card = button.closest('.car-card');
+    if (!card) {
+      console.error("Could not find the closest '.car-card' element.");
+      return;
+    }
+
+    const nameElement = card.querySelector('.card-title');
+    const priceElement = card.querySelector('.card-text');
+    const imgElement = card.querySelector('img.car-card-image');
+
+    if (!nameElement || !priceElement || !imgElement) {
+      console.error("One or more required elements (title, price, image) not found in the car card.");
+      return;
+    }
+
+    const car = {
+      name: nameElement.innerText,
+      price: priceElement.innerText.replace(/[^\d]/g, ''), // Remove non-digit characters from price
+      img: imgElement.getAttribute('src')
+    };
+
+    // Get existing cart items from local storage or initialize an empty array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(car);
+
+    // Store the updated cart in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Redirect to the shopping cart page
+    window.location.href = 'Shop.HTML';
+  }
+</script>
+<script>
+    function applyCardStyle() {
+      const cards = document.querySelectorAll('.card.car-card');
+      const maxWidth = 2000;
+  
+      cards.forEach(card => {
+        if (window.innerWidth <= maxWidth) {
+          card.style.background = 'linear-gradient(to right, hsl(175, 94%, 54%), #36ccd6, #00f0ff, #0084ff, #0044ff, #6200ea)';
+          card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
+          card.style.transition = 'all 0.3s ease-in-out';
+          card.style.borderRadius = '20px';
+          card.style.overflow = 'hidden';
+        } else {
+          // Optional: reset to default if screen is wider than 2000px
+          card.style.background = '';
+          card.style.boxShadow = '';
+          card.style.transition = '';
+          card.style.borderRadius = '';
+          card.style.overflow = '';
+        }
+      });
+    }
+    document.getElementById('darkModeToggle').addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+  const icon = this.querySelector('i');
+  icon.classList.toggle('fa-moon');
+  icon.classList.toggle('fa-sun');
+});
+
+    // Run on load
+    window.addEventListener('load', applyCardStyle);
+  
+    // Optional: run again on resize
+    window.addEventListener('resize', applyCardStyle);
+  </script>  
+</body>
+</html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelem Car</title>
+    <link rel="icon" href="picture room/kelem blue.png" type="picture room/kelem blue.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+    /* Custom Styles */
+    .navbar {
+        background-color: #f8f9fa; /* Light background for navbar */
+        font-weight: bold;
+    }
+
+    .navbar-nav {
+            margin-left: auto; /* Push navbar items to the right */
+    }
+    .navbar-brand img {
+        max-height: 50px; /* Adjust logo size */
+    }
+    .navbar-brand {
+            margin-right: auto; /* Push brand to the left */
+    }
+    .navbar-brand h1 {
+        font-weight: bold;
+        font-size: 24px;
+        margin: 0;
+        color: #078bbe;
+        margin-right: auto;
+    }
+
+
+
+    /* Hero Section Styles */
+    .hero {
+        display: flex;
+        height: 80vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hero-left {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 30px 50px;
+        color: #fff;
+        background: linear-gradient(to right, rgb(0, 0, 0), rgb(16, 185, 197), rgb(162, 222, 224));
+    }
+
+    .hero-left h1 {
+        font-size: 4em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .hero-left p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .btn-book-now {
+        background-color: #333;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .hero-right {
+        width: 50%;
+        position: relative;
+    }
+
+    /* Slider Styles */
+    .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .hero-slider .slick-slide {
+        position: relative;
+        height: 100%;
+    }
+
+    .hero-slider .slick-slide img {
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-slider .slick-prev,
+    .hero-slider .slick-next {
+        display: none !important; /* Hide the prev/next buttons */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .hero-slider .slick-prev {
+        left: 10px;
+    }
+
+    .hero-slider .slick-next {
+        right: 10px;
+    }
+
+    .hero-slider .slick-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        z-index: 3;
+    }
+
+    .hero-slider .slick-dots li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .hero-slider .slick-dots li.slick-active {
+        background-color: #fff;
+    }
+
+/* Custom Styles */
+.car-card {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    color: #000000;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 1;
+
+    /* Gradient-like multi-shadow */
+    box-shadow:
+        0 4px 8px rgba(0, 204, 231, 0.3),   /* Light aqua */
+        0 8px 16px rgba(54, 204, 214, 0.3), /* Teal */
+        0 12px 24px rgba(0, 110, 255, 0.3), /* Medium blue */
+        0 16px 32px rgba(0, 68, 255, 0.2),  /* Royal blue */
+        0 20px 40px rgba(98, 0, 234, 0.2);  /* Purple end */
+}
+
+/* Gradient shadow as pseudo-element */
+.car-card::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 80%;
+    height: 30px;
+    background: linear-gradient(
+        to right,
+        hsl(175, 94%, 54%),
+        #36ccd6,
+        #00f0ff,
+        #0084ff,
+        #0044ff,
+        #6200ea
+    );
+    background-size: 300% 300%;
+    filter: blur(20px);
+    opacity: 0.7;
+    z-index: -1;
+    pointer-events: none;
+    animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Image Styling */
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Image Zoom on Hover */
+.car-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Slick Button Styles */
+.slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    background: rgba(5, 122, 218, 0.884);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background: rgba(21, 114, 219, 0.8);
+}
+.slick-prev { left: 20px; }
+.slick-next { right: 20px; }
+
+    .footer {
+        background-color: hsl(0, 0%, 0%);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
+    #scroll-section:hover {
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.6),
+        0 30px 60px rgba(255, 193, 7, 0.4),
+        inset 0 -8px 30px rgba(0, 255, 170, 0.4);
+    transition: all 0.4s ease-in-out;
+}
+
+.scroll-section {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+    
+        .scroll-section-content {
+            padding: 50px 0;
+        }
+        .scroll-section-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .scroll-section-content p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+        .scroll-section-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        /* Testimonial Carousel Container */
+#testimonialCarousel {
+    background: linear-gradient(to right, #000000, #0072ff);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blockquote Styling */
+#testimonialCarousel blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 0 auto 15px;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* Author Name */
+#testimonialCarousel p {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: #ffffffb3;
+    letter-spacing: 0.5px;
+}
+
+/* Smooth transition between items */
+.carousel-inner .carousel-item {
+    transition: opacity 1s ease-in-out;
+}
+
+/* Optional: Add some dots (if you want later) */
+.carousel-indicators li {
+    background-color: white;
+}
+
+/* Optional: Arrow controls (if you enable them) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    #testimonialCarousel blockquote {
+        font-size: 1.2rem;
+    }
+}
+.cinematic-text {
+    font-size: 2.8rem;
+    font-weight: bold;
+    background: linear-gradient(
+        to right,
+        #000000,
+        #36ccd6,
+        #00f0ff,
+        #0084ff,
+        #0044ff,
+        #6200ea
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+        0 0 10px rgba(0, 204, 231, 0.7),
+        0 0 20px rgba(0, 110, 255, 0.5),
+        0 0 40px rgba(98, 0, 234, 0.4),
+        2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+    animation: cinematicText 2.5s ease-out forwards;
+    display: inline-block;
+    opacity: 0;
+}
+
+@keyframes cinematicText {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+        letter-spacing: 10px;
+        filter: blur(4px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+        letter-spacing: 3px;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        letter-spacing: 3px;
+    }
+}
+
+</style>
+</head>
+<body class="bg-light font-inter">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="picture room/kelem logo.png" alt="kelem car" style="max-height: 50px; margin-right: 10px;">
+            <h1 class="mb-0" style="font-size: 24px;">Kelem Car</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">index</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="background-color: #0faabe;">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Inventory.html">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Sell My Car.html">Sell My Car</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Car Leasing.html">Car Leasing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Shop.HTML">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-link nav-link" id="darkModeToggle">
+                      <i class="fas fa-moon"></i>
+                    </button>
+                  </li>
+                  <li class="nav-item Active" style="background: linear-gradient(to right, #7b00ff, #0057ee);">
+                    <a class="nav-link" href="Admin.html" style="color: white;">Admin</a>
+                </li>
+                  
+                  
+                  <script>
+                    // Dark mode toggle
+                    document.getElementById('darkModeToggle').addEventListener('click', function() {
+                      document.body.classList.toggle('dark-mode');
+                      this.querySelector('i').classList.toggle('fa-sun');
+                    });
+                  </script>
+                  
+                  <style>
+                    .dark-mode {
+                      background-color: #121212;
+                      color: #f8f9fa;
+                    }
+                    .dark-mode .card {
+                      background-color: #1e1e1e;
+                      color: #f8f9fa;
+                    }
+                    .dark-mode .modal-content {
+                      background-color: #1e1e1e;
+                      color: #f8f9fa;
+                    }
+                  </style>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid mt-5 px-0 wow animate__fadeIn">
+        <div class="row no-gutters shadow-lg rounded overflow-hidden">
+            <div class="col-12">
+                <!-- If you plan to add an image or something else, leave this div here -->
+            </div>
+        </div>
+    
+        <div class="container-fluid mt-4 px-0 text-center py-3">
+            <h2 class="cinematic-text">
+                Welcome to Kelem Car
+            </h2>
+            <p class="wow animate__fadeInUp" style="
+                font-size: 1.1rem;
+                color: #555;
+                margin-bottom: 20px;
+            ">
+                Your one-stop solution for all your car needs!
+            </p>
+    
+            <a href="Inventory.html" class="btn btn-primary btn-sm shadow-sm wow animate__zoomIn" style="
+                padding: 8px 20px;
+                font-size: 0.95rem;
+                border-radius: 30px;
+                background-color: #078bbe;
+                border: none;
+            ">
+                Explore Inventory
+            </a>
+        </div>
+    </div>
+    <!-- Hero Section -->
+     <div class="hero">
+        <div class="hero-left wow animate__fadeInLeft" data-wow-duration="1.2s">
+            <h1>Find Your Dream Ride Today</h1>
+            <p>🔥 Best Deals • Top Brands • Easy Financing!</p>
+            <p>Experience luxury with a Lamborghini rental. Choose from a wide selection of models for any occasion.</p>
+            <a href="Inventory.html" class="btn-book-now wow animate__pulse" data-wow-iteration="infinite">Book now</a>
+        </div>
+        <div class="hero-right wow animate__fadeInRight" data-wow-duration="1.2s">
+            <div class="hero-slider">
+                <div class="slick-slide">
+                    <img src="picture room/dzire.png" alt="picture room/dzire.png">
+                </div>
+                <div class="slick-slide">
+                    <img src="picture room/suzuki Swift.png" alt="picture room/suzuki Swift.png">
+                </div>
+                <div class="slick-slide">
+                    <img src="picture room/Hyundai-Avante.jpg" alt="Hyundai-Avante.jpg">
+                </div>
+                <div class="slick-slide">
+                    <img src="picture room/toyota hiace.png" alt="picture room/toyota hiace.png">
+                </div>
+                <div class="slick-slide">
+                    <img src="picture room/corola.jpg" alt="picture room/corola.jpg">
+                </div>
+                <div class="slick-slide">
+                    <img src="picture room/Toyota-HILUX-Invincible.jpg" alt="Toyota-HILUX-Invincible.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="testimonialCarousel" class="carousel slide wow animate__fadeInUp" data-wow-duration="1.5s" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <blockquote>“Best place to sell my car fast!”</blockquote>
+            <p>- John Doe</p>
+          </div>
+          <div class="carousel-item">
+            <blockquote>“Amazing dealership network, found my dream car!”</blockquote>
+            <p>- Sarah A.</p>
+          </div>
+        </div>
+      </div>
+                                   <!-- Car Section -->
+    <div class="container mt-5">
+        <h2>Welcome to Motors World</h2>
+        <div class="row">
+            <div class="col-md-3 wow animate__zoomIn" data-wow-delay="0.2s">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,245 views</small>
+                            <small class="text-muted">5 min read</small>
+                        </div>
+                    </div>
+                    
+                    <img src="picture room/Hyundai-Avante.jpg" alt="Hyundai-Avante" data-toggle="modal" data-target="#carModal" 
+                    data-name="Hyundai-Avante" data-price="$30,000" data-img="picture room/Hyundai-Avante.jpg"
+                    data-description="The Hyundai Avante is a sleek and efficient compact sedan, known for its modern design, advanced safety features, and smooth performance.
+                    Key features visible:
+                    
+                    - Color: Metallic Grey
+                    - Make and Model: Hyundai Avante 2025
+                    - Body Style: Sedan
+                    - Front View: Dynamic and sporty front profile with bold grille.
+                    - License Plate: The license plate is visible and reads 'HYU 2025'.
+                    - Wheels: Stylish alloy wheels with aerodynamic design.
+                    - Headlights: LED daytime running lights and projector headlights.
+                    - Grille: Cascading grille with chrome accents.
+                    - Hyundai Logo: The Hyundai emblem is prominently displayed on the front.
+                    - Door Handles: Body-colored door handles.
+                    - Mirrors: Electrically adjustable side mirrors with integrated turn signals.">
+                    <div class="p-3">
+                    
+                        <h5>Hyundai-Avante</h5>
+                        <p>$45,000</p>
+                    </div>
+                </div>
+            </div>             
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 980 views</small>
+                            <small class="text-muted">7 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/Toyota-HILUX-Invincible.jpg" alt="Toyota Invincible" data-toggle="modal" data-target="#carModal" 
+                    data-name="Toyota Invincible" data-price="$42,000" data-img="picture room/Toyota-HILUX-Invincible.jpg" 
+                    data-description="Key Features of the Toyota Invincible (Based on Typical Model Specifications):
+                
+                - Rugged Styling: The Invincible trim emphasizes toughness and capability.
+                - Bold Accents: Aggressive front grille, reinforced bumpers, and muscular body lines.
+                - Off-Road Capability: Designed for rough terrains with improved suspension and traction control.
+                - Alloy Wheels: Heavy-duty alloy wheels suitable for various driving conditions.
+                
+                Performance:
+                - Engine Power: Equipped with a robust engine, typically a 2.8-liter turbo diesel or V6 option.
+                - Towing Capacity: Excellent towing capabilities, ideal for adventure and utility.
+                - Drive Modes: Multiple driving modes including off-road and sport.
+                
+                Interior Comfort and Convenience:
+                - Premium Upholstery: Durable leather or high-quality fabric seating.
+                - Advanced Infotainment: Touchscreen system with navigation and smartphone connectivity.
+                - Safety Suite: Advanced safety features like lane-keeping assist, adaptive cruise control, and more.">
+                    <div class="p-3">
+                        <h5>Toyota Invincible</h5>
+                        <p>$42,000</p>
+                    </div>
+                </div>                
+            </div>            
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,120 views</small>
+                            <small class="text-muted">6 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/corola.jpg" alt="Toyota Corolla" data-toggle="modal" data-target="#carModal" 
+                    data-name="Toyota Corolla" data-price="$24,500" data-img="picture room/corola.jpg" 
+                    data-description="Key Features of the Toyota Corolla:
+                
+                - Sleek and Modern Design: The Toyota Corolla features an aerodynamic silhouette with refined lines for a sporty yet elegant look.
+                - Comfortable Interior: Spacious cabin with premium materials and advanced seating comfort for both driver and passengers.
+                - Advanced Technology: Integrated touchscreen infotainment system with Apple CarPlay, Android Auto, and voice recognition.
+                - Safety First: Equipped with Toyota Safety Sense suite, including pre-collision system, lane departure alert, and adaptive cruise control.
+                - Efficient Performance: Known for its outstanding fuel economy, making it ideal for daily commutes and long drives.
+                
+                Performance:
+                - Engine Options: Offers a fuel-efficient 1.8-liter 4-cylinder engine or a punchy 2.0-liter Dynamic Force engine.
+                - Smooth Ride: Tuned suspension for comfort and stability on a variety of road surfaces.
+                - Eco and Sport Modes: Selectable drive modes to match your driving style.
+                
+                Interior Features:
+                - Seating: High-quality fabric or available SofTex-trimmed seats for added luxury.
+                - Cargo Space: Generous trunk space with fold-down rear seats for versatility.
+                - Climate Control: Automatic climate control and rear-seat vents for all-season comfort.">
+                    <div class="p-3">
+                        <h5>Toyota Corolla</h5>
+                        <p>$24,500</p>
+                    </div>
+                </div>
+                
+            </div>                       
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,050 views</small>
+                            <small class="text-muted">5 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/dzire.png" alt="Suzuki Dzire" data-toggle="modal" data-target="#carModal" 
+                    data-name="Suzuki Dzire" data-price="$16,500" data-img="picture room/Dzire.png" 
+                    data-description="Key Features of the Suzuki Dzire:
+                    
+                    - Elegant Compact Sedan: The Suzuki Dzire offers a perfect blend of style, comfort, and practicality for city and highway driving.
+                    - Fuel Efficiency: Known for its exceptional mileage, making it a highly economical option.
+                    - Spacious Interior: Despite its compact exterior, the Dzire boasts a roomy cabin with ample legroom and headspace.
+                    - Safety Features: Comes equipped with dual airbags, ABS with EBD, rear parking sensors, and a rearview camera.
+                    - Smooth Handling: Lightweight construction and responsive steering ensure an enjoyable driving experience.
+                    
+                    Performance:
+                    - Engine Options: Features a 1.2-liter petrol engine offering peppy performance with excellent efficiency.
+                    - Transmission: Available in both manual and automatic transmission variants for driving convenience.
+                    - Ride Quality: Tuned suspension for a comfortable and stable ride.
+                    
+                    Interior Features:
+                    - Comfort: Premium fabric upholstery with ergonomic seating for long journeys.
+                    - Infotainment: Touchscreen infotainment system with smartphone connectivity (Apple CarPlay & Android Auto).
+                    - Climate Control: Automatic climate control to maintain cabin comfort in all weather conditions.">
+                    <div class="p-3">
+                        <h5>Suzuki Dzire</h5>
+                        <p>$16,500</p>
+                    </div>
+                </div>               
+            </div>                        
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,180 views</small>
+                            <small class="text-muted">5 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/suzuki Swift.png" alt="Suzuki Swift" data-toggle="modal" data-target="#carModal"
+                    data-name="Suzuki Swift" data-price="$18,000" data-img="picture room/suzuki Swift.png"
+                    data-description="Key Features of the Suzuki Swift:
+            
+            - Sporty and Compact Design: With sleek lines and a bold front grille, the Swift presents a youthful and energetic look.
+            - Efficient Performance: Powered by a fuel-efficient 1.2-liter petrol engine, offering excellent city and highway mileage.
+            - Agile Handling: Lightweight body and responsive steering for a fun and nimble driving experience.
+            - Advanced Safety: Features like dual airbags, ABS with EBD, rear parking sensors, and stability control.
+            - Tech-Savvy Interior: 7-inch touchscreen infotainment system with Apple CarPlay and Android Auto integration.
+            - Comfort and Convenience: Automatic climate control, keyless entry, and ample legroom for passengers.
+            
+            Performance:
+            - Engine Options: Offers a fuel-efficient 1.2-liter petrol engine for everyday driving enjoyment.
+            - Smooth Ride: Tuned suspension for comfort and stability on a variety of road surfaces.
+            - Eco and Sport Modes: Selectable drive modes to match your driving style.
+            
+            Interior Features:
+            - Seating: Premium fabric seats with ergonomic design for comfort.
+            - Cargo Space: Spacious boot and foldable rear seats for increased versatility.
+            - Infotainment: Modern connectivity features keep you entertained and connected on the go.
+            
+            Ideal for city commutes and weekend adventures, the Suzuki Swift delivers style, efficiency, and practicality in one dynamic package.">
+                    <div class="p-3">
+                        <h5>Suzuki Swift</h5>
+                        <p>$18,000</p>
+                    </div>
+                </div>               
+            </div>                     
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,320 views</small>
+                            <small class="text-muted">7 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/toyota hiace.png" alt="Toyota Hiace" data-toggle="modal" data-target="#carModal"
+                    data-name="Toyota Hiace" data-price="$36,000" data-img="picture room/toyota hiace.png"
+                    data-description="The Toyota Hiace is a durable and versatile van, designed for both commercial use and family travel with its spacious interior and reliable performance.
+            
+            Key Features:
+            - Versatile Design: The Hiace boasts a spacious interior with flexible seating arrangements for passengers and cargo.
+            - Durable Build: Known for its solid construction and longevity, making it a trusted choice for businesses worldwide.
+            - Safety Systems: Equipped with modern safety features including ABS, electronic stability control, and multiple airbags for driver and passengers.
+            - Practical Sliding Doors: Wide sliding side doors for easy access in tight spaces, enhancing convenience.
+            - Advanced Infotainment: Features a touchscreen infotainment system with Bluetooth connectivity for hands-free operation.
+            
+            Performance:
+            - Engine Options: Offers a powerful and efficient diesel engine, perfect for heavy-duty use and long journeys.
+            - Transmission: Smooth automatic or manual transmission options available.
+            - Handling: Balanced suspension system for comfortable rides even when fully loaded.
+            
+            Interior Features:
+            - Seating Comfort: Ample legroom and supportive seats designed for long trips.
+            - Cargo Flexibility: Adjustable rear seating and ample cargo space for commercial needs.
+            - Climate Control: Effective air conditioning system ensures passenger comfort in all weather conditions.
+            
+            Whether for business operations or transporting large families, the Toyota Hiace delivers reliability, capacity, and comfort in one robust package.">
+                    <div class="p-3">
+                        <h5>Toyota Hiace</h5>
+                        <p>$36,000</p>
+                    </div>
+                </div>
+            </div>                                
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,150 views</small>
+                            <small class="text-muted">4 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/atoz.png" alt="Hyundai Atoz" data-toggle="modal" data-target="#carModal"
+                    data-name="Hyundai Atoz" data-price="$12,500" data-img="picture room/atoz.png"
+                    data-description="The Hyundai Atoz is a compact and economical hatchback, ideal for city driving and everyday convenience.
+            
+            Key Features:
+            - Compact Design: Small footprint for easy maneuverability and parking in urban environments.
+            - Efficient Engine: A fuel-efficient engine that delivers excellent mileage for cost-effective driving.
+            - Practicality: Spacious interior considering its compact size, with flexible cargo and seating configurations.
+            - Safety Features: Equipped with essential safety systems including airbags and ABS for passenger protection.
+            - Comfort & Convenience: Power windows, air conditioning, and a user-friendly dashboard for driver comfort.
+            
+            Performance:
+            - Engine: Small but capable engine, delivering reliable performance for daily commuting.
+            - Transmission: Smooth manual or automatic transmission options to suit different driving preferences.
+            - Fuel Efficiency: Outstanding fuel economy, making it perfect for budget-conscious drivers.
+            
+            Interior Features:
+            - Comfortable Seating: Ergonomically designed seats for both short city trips and longer journeys.
+            - Cargo Space: Practical boot space for groceries and light luggage.
+            - Infotainment: Basic infotainment system with essential connectivity options.
+            
+            The Hyundai Atoz is the perfect companion for urban adventures, offering reliability, economy, and practicality in a smart, compact package.">
+                    <div class="p-3">
+                        <h5>Hyundai Atoz</h5>
+                        <p>$12,500</p>
+                    </div>
+                </div>
+            </div>                              
+            <div class="col-md-3">
+                <div class="car-card">
+                    <div class="card-body">
+                        <!-- ... existing content ... -->
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small class="text-muted"><i class="far fa-eye"></i> 1,080 views</small>
+                            <small class="text-muted">4 min read</small>
+                        </div>
+                    </div>
+                    <img src="picture room/vits.jpg" alt="Toyota Vitz" data-toggle="modal" data-target="#carModal"
+                    data-name="Toyota Vitz" data-price="$14,500" data-img="picture room/vits.jpg"
+                    data-description="The Toyota Vitz is a stylish and compact hatchback, perfect for city commuting with its blend of efficiency, comfort, and advanced features.
+            
+            Key Features:
+            - Compact & Sporty Design: Sleek lines and modern styling make the Vitz a standout in urban environments.
+            - Fuel Efficiency: Renowned for its low fuel consumption, making it highly economical for daily driving.
+            - Maneuverability: Compact size ensures effortless parking and navigation through busy city streets.
+            - Safety Systems: Equipped with advanced safety features including ABS, airbags, and stability control for peace of mind.
+            - Infotainment: Integrated multimedia system with Bluetooth connectivity and touchscreen interface.
+            
+            Performance:
+            - Engine Options: Offers a range of fuel-efficient engines, providing both performance and economy.
+            - Transmission: Smooth automatic or manual options to suit various driving preferences.
+            - Responsive Handling: Tuned suspension for agile and comfortable rides.
+            
+            Interior Features:
+            - Comfort: Well-designed seating with ample space for passengers and driver alike.
+            - Cargo Space: Flexible rear seating to expand cargo capacity when needed.
+            - Connectivity: User-friendly infotainment system keeping you connected on the go.
+            
+            The Toyota Vitz delivers a perfect combination of practicality, reliability, and modern comfort, making it an excellent choice for urban drivers.">
+                    <div class="p-3">
+                        <h5>Toyota Vitz</h5>
+                        <p>$14,500</p>
+                    </div>
+                </div>
+            </div>                           
+        </div>
+    </div>
+<!-- Modal for Car Details -->
+<div class="modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="carModalLabel">Car Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="modalCarImage" src="" alt="Car Image" class="img-fluid mb-3" style="width: 100%;">
+                <h5 id="modalCarName"></h5>
+                <p id="modalCarPrice"></p>
+                <div id="modalCarDescription"></div>
+                <!-- Key Features Section -->
+                <h6>Key Features</h6>
+                <ul id="modalKeyFeatures"></ul>
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-start gap-2 mb-3">
+                    <button class="btn btn-sm btn-outline-primary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-sm btn-outline-info"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="fab fa-instagram"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-link"></i></button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center w-100 text-muted">
+                    <small>Published: March 27, 2025</small>
+                    <small>By: Automotive Expert</small>
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Scroll Section with Animations -->
+<div id="scroll-section" class="container-fluid mt-5 py-5 position-relative"
+    style="
+        background: linear-gradient(to right, #000000, hsl(180, 87%, 40%));
+        color: white;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.5), /* Main shadow */
+            0 20px 40px rgba(255, 223, 0, 0.3), /* Yellow soft glow */
+            inset 0 -5px 20px rgba(0, 255, 170, 0.3); /* Inner glow effect */
+    ">
+    <!-- Floating Decorative Blobs -->
+    <div style="position: absolute; top: -50px; left: -50px; width: 250px; height: 250px; background: rgba(255, 225, 0, 0.3); border-radius: 50%; filter: blur(90px); animation: float 8s ease-in-out infinite;"></div>
+    <div style="position: absolute; bottom: -60px; right: -60px; width: 250px; height: 250px; background: rgba(0, 255, 183, 0.2); border-radius: 50%; filter: blur(80px); animation: float 10s ease-in-out infinite reverse;"></div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Section -->
+            <div class="col-lg-6 text-left wow animate__fadeInLeft">
+                <h1 class="display-4 font-weight-bold mb-4" style="font-size: 2.7rem; line-height: 1.2; text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
+                    Find The Best Deals And Sell Your Vehicle At The Best Price
+                </h1>
+
+                <p class="lead mb-3 text-light" style="font-size: 1.15rem;">
+                    A Car Magazine That Surely Stands Out
+                </p>
+
+                <p class="mb-4 text-light" style="font-size: 1.2rem;">
+                    Click here to find out about your newest dream car.
+                </p>
+
+                <p class="lead font-weight-bold mb-4" style="font-size: 1.5rem; background: linear-gradient(to right, hsl(125, 90%, 51%), hwb(0 8% 8%)); -webkit-background-clip: text; color: transparent;">
+                    Kelem Car - Your Ultimate Car Destination
+                </p>
+
+                <h2 class="mt-4 mb-3">What We Do</h2>
+
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #dcdcdc;">
+                    Having been in business for over <span class="counter" data-target="43">0</span> years, we collaborate with dealerships to help them reach a broader audience. Advertise your car, trade in, and compare models all in one place!
+                </p>
+
+                <div class="d-flex flex-wrap mt-4">
+                    <a href="Inventory.html" class="btn btn-warning btn-lg mr-3 mb-2 shadow" style="font-size: 1.1rem; padding: 12px 28px; border-radius: 50px;">
+                        Search Engine
+                    </a>
+
+                    <a href="Inventory.html" class="btn btn-outline-light btn-lg mb-2 shadow" style="font-size: 1.1rem; padding: 12px 28px; border-radius: 50px;">
+                        Check Out Dealerships
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Section with Glow Effect -->
+            <div class="col-lg-6 text-center wow animate__fadeInRight">
+                <img src="picture room/suzuki-dzire.jpg" alt="Car" class="img-fluid rounded shadow-lg glowing-image"
+                     style="width: 100%; height: auto; object-fit: cover; border-radius: 20px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS for Glow, Floating, and Shine -->
+<style>
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.glowing-image {
+    box-shadow: 0 0 40px 10px rgba(255, 193, 7, 0.8), 0 10px 30px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+/* Optional Shine Effect on Hover */
+.glowing-image:hover {
+    box-shadow: 0 0 60px 15px rgba(255, 223, 0, 1), 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* Counter Smooth Animation */
+.counter {
+    font-weight: bold;
+    color: #ffd700;
+    animation: countUp 2s ease-out forwards;
+}
+
+@keyframes countUp {
+    from { content: "0"; }
+    to { content: attr(data-target); }
+}
+</style>
+<!-- New Futuristic Features Section -->
+<section class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="mb-4">Experience the Future of Car Shopping</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- AR Preview Feature -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-lg wow animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="card-body text-center">
+                    <div class="icon-box" style="font-size: 3rem; color: #078bbe;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="mt-3">AR Car Preview</h4>
+                    <p>See any car in your driveway using augmented reality before you buy</p>
+                    <button class="btn btn-outline-primary mt-2 ar-preview-btn" data-model="bmw-535i">
+                        Try It Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Recommendation -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-lg wow animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="card-body text-center">
+                    <div class="icon-box" style="font-size: 3rem; color: #078bbe;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4 class="mt-3">AI Car Match</h4>
+                    <p>Our AI will find your perfect car based on your lifestyle and preferences</p>
+                    <button class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#aiModal">
+                        Get Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Voice Search -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-lg wow animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="card-body text-center">
+                    <div class="icon-box" style="font-size: 3rem; color: #078bbe;">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h4 class="mt-3">Voice Search</h4>
+                    <p>Just say what you're looking for and we'll find it for you</p>
+                    <button class="btn btn-outline-primary mt-2 voice-search-btn">
+                        <i class="fas fa-microphone mr-2"></i>Speak Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 3D Viewer and Virtual Test Drive -->
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <div class="icon-box" style="font-size: 3rem; color: #078bbe;">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4 class="mt-3">3D Car Explorer</h4>
+                    <p>Inspect every angle of your dream car with our interactive 3D viewer</p>
+                    <button class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#3dModal">
+                        Explore in 3D
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <div class="icon-box" style="font-size: 3rem; color: #078bbe;">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h4 class="mt-3">Virtual Test Drive</h4>
+                    <p>Experience the thrill of driving before visiting the dealership</p>
+                    <button class="btn btn-outline-primary mt-2" data-toggle="modal" data-target="#vrModal">
+                        Start Test Drive
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Recommendation Modal -->
+<div class="modal fade" id="aiModal" tabindex="-1" role="dialog" aria-labelledby="aiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aiModalLabel">AI Car Match</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Tell us about yourself</h5>
+                            <form id="aiForm">
+                                <div class="form-group">
+                                    <label>What's your budget range?</label>
+                                    <select class="form-control">
+                                        <option>Under $20,000</option>
+                                        <option>$20,000 - $40,000</option>
+                                        <option>$40,000 - $60,000</option>
+                                        <option>$60,000+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Primary use for the vehicle?</label>
+                                    <select class="form-control">
+                                        <option>Daily Commute</option>
+                                        <option>Family Vehicle</option>
+                                        <option>Weekend Fun</option>
+                                        <option>Off-Road Adventures</option>
+                                        <option>Luxury Experience</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Most important feature?</label>
+                                    <select class="form-control">
+                                        <option>Fuel Efficiency</option>
+                                        <option>Performance</option>
+                                        <option>Safety</option>
+                                        <option>Technology</option>
+                                        <option>Comfort</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Find My Match</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="aiResults" class="text-center mt-4" style="display: none;">
+                                <h4>Your Perfect Match</h4>
+                                <div class="card mt-3">
+                                    <img src="picture room/suzuki Swift.png" class="card-img-top" alt="Recommended Car">
+                                    <div class="card-body">
+                                        <h5 class="card-title">suzuki Swift</h5>
+                                        <p class="card-text">Based on your preferences, this luxury sedan matches 92% of your criteria.</p>
+                                        <a href="#" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3D Viewer Modal -->
+<div class="modal fade" id="3dModal" tabindex="-1" role="dialog" aria-labelledby="3dModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="3dModalLabel">3D Car Explorer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div style="height: 500px; background-color: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+                    <div>
+                        <i class="fas fa-cube" style="font-size: 3rem; color: #078bbe;"></i>
+                        <p class="mt-3">Interactive 3D Viewer Loading...</p>
+                        <p>Rotate, zoom, and explore every detail of your dream car</p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-outline-secondary mr-2"><i class="fas fa-redo"></i> Reset View</button>
+                    <button class="btn btn-outline-secondary mr-2"><i class="fas fa-paint-brush"></i> Change Color</button>
+                    <button class="btn btn-outline-secondary"><i class="fas fa-cog"></i> View Interior</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VR Test Drive Modal -->
+<div class="modal fade" id="vrModal" tabindex="-1" role="dialog" aria-labelledby="vrModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vrModalLabel">Virtual Test Drive</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div style="height: 300px; background-color: #000; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+                            <i class="fas fa-vr-cardboard" style="font-size: 3rem;"></i>
+                            <p class="mt-3">Virtual Test Drive Experience</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Choose Your Experience</h5>
+                        <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
+                            <label class="btn btn-outline-primary active">
+                                <input type="radio" name="driveMode" checked> City Driving
+                            </label>
+                            <label class="btn btn-outline-primary">
+                                <input type="radio" name="driveMode"> Highway Cruise
+                            </label>
+                            <label class="btn btn-outline-primary">
+                                <input type="radio" name="driveMode"> Mountain Roads
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-primary btn-lg"><i class="fas fa-play mr-2"></i> Start Test Drive</button>
+                    </div>
+                    <div class="mt-3 text-muted">
+                        <small>For best experience, use VR headset or rotate device</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-start gap-2 mb-3">
+    <button class="btn btn-sm btn-outline-primary"><i class="fab fa-facebook-f"></i></button>
+    <button class="btn btn-sm btn-outline-info"><i class="fab fa-twitter"></i></button>
+    <button class="btn btn-sm btn-outline-danger"><i class="fab fa-instagram"></i></button>
+    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-link"></i></button>
+</div>
+
+<script>
+    // Voice Search Functionality
+    $(document).ready(function(){
+        $('.voice-search-btn').click(function(){
+            // This would normally integrate with Web Speech API
+            $(this).html('<i class="fas fa-microphone-slash mr-2"></i> Listening...');
+            setTimeout(function(){
+                $('.voice-search-btn').html('<i class="fas fa-microphone mr-2"></i> Speak Now');
+                alert("Voice search would activate here in a real implementation. We heard: 'Show me luxury SUVs under $50,000'");
+            }, 2000);
+        });
+        
+        // AR Preview Button
+        $('.ar-preview-btn').click(function(){
+            alert("In a real implementation, this would launch AR view to place the car in your environment using your camera.");
+        });
+        
+        // AI Form Submission
+        $('#aiForm').submit(function(e){
+            e.preventDefault();
+            $('#aiResults').fadeIn();
+            $('html, body').animate({
+                scrollTop: $('#aiResults').offset().top - 100
+            }, 500);
+        });
+    });
+</script>
+
+<style>
+    /* Additional styles for new features */
+    .icon-box {
+        transition: all 0.3s ease;
+    }
+    .card:hover .icon-box {
+        transform: scale(1.2);
+    }
+    .ar-preview-btn, .voice-search-btn {
+        transition: all 0.3s ease;
+    }
+    .ar-preview-btn:hover, .voice-search-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    #aiResults {
+        transition: all 0.5s ease;
+    }
+</style>
+    <footer class="footer">
+        <p>&copy; 2024 Motors. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.hero-slider').slick({
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true,
+                arrows: false // Fix for arrows
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('a[href="#scroll-section"]').on('click', function(event) {
+                if ($('#scroll-section').length) { // Prevent error if element is missing
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: $('#scroll-section').offset().top
+                    }, 1000);
+                }
+            });
+        });
+    </script>    
+    <script>
+        $(document).ready(function() {
+    // When an image with data-toggle="modal" is clicked
+    $('img[data-toggle="modal"]').on('click', function() {
+        var carName = $(this).data('name');
+        var carPrice = $(this).data('price');
+        var carImg = $(this).data('img');
+        var carDescription = $(this).data('description');
+        
+        // Extract key features from description (assuming it's in a structured format)
+        var features = carDescription.split("\n").map(function(line) {
+            return "<li>" + line.trim() + "</li>";
+        }).join('');
+        
+        // Populate the modal with car details
+        $('#modalCarName').text(carName);
+        $('#modalCarPrice').text(carPrice);
+        $('#modalCarImage').attr('src', carImg);
+        $('#modalCarDescription').text(carDescription);
+        $('#modalKeyFeatures').html(features); // Add the key features dynamically
+    });
+});
+    </script>
+<div id="loading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;justify-content:center;align-items:center;">
+    <div class="spinner-border text-primary" style="width:3rem;height:3rem;color:#0faabe!important" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        document.getElementById('loading').style.display = 'none';
+    });
+</script>
+<script>
+    document.getElementById('aiForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('aiResults').style.display = 'block';
+});
+
+</script>
+<script>
+    document.querySelector('#vrModal .btn-primary').addEventListener('click', function() {
+    alert('Launching Virtual Test Drive Experience!');
+});
+</script>
+<script>
+    $('#testimonialCarousel').carousel({
+    interval: 3000,
+    ride: 'carousel'
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<!-- Counter Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const current = +counter.innerText;
+                const increment = target / 100;
+    
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(updateCounter, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCounter();
+        });
+    });
+    </script>
+    <!-- Counter JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCounter, 15);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCounter();
+        });
+    });
+    </script>    
+<!-- Footer Section -->    
+<!-- Replace script includes at top with these at bottom -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" defer></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" defer></script>
+</body>
+</html>
